@@ -1,15 +1,16 @@
 #include <bits/stdc++.h>
+#include <sweepPointPoint.cpp>
 
 struct eventQueue{
-    int index;
+    Point eventPoint;
     eventQueue* left;
     eventQueue* right;
     int height;
 };
 
-eventQueue *createeventQueueNode(int index) {
+eventQueue *createeventQueueNode(Point eventPoint) {
     eventQueue *newnode = new eventQueue();
-    newnode->index = index;
+    newnode->eventPoint = eventPoint;
     newnode->left = NULL;
     newnode->right = NULL;
     return newnode;
@@ -59,28 +60,28 @@ int heightDiff(eventQueue* node){
     return height(node->left) - height(node->right);
 }
 
-eventQueue* insert(eventQueue* root, int index)
+eventQueue* insert(eventQueue* root, Point eventPoint)
 {
     if (root == NULL)
-        return createeventQueueNode(index);
+        return createeventQueueNode(eventPoint);
  
     //how to insert here?
-    if(index>root->index)
-        root->right=insert(root->right,index);
+    if(eventPoint.y>root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x<root->eventPoint.x))
+        root->right=insert(root->right,eventPoint);
     else   
-        root->left=insert(root->left,index);
+        root->left=insert(root->left,eventPoint);
     root->height =(height(root->left) > height(root->right))? height(root->left) + 1 : height(root->right) + 1 ;
  
     int diff = heightDiff(root);
-    if (diff > 1 && index < root->left->index)
+    if (diff > 1 && eventPoint.y < root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x > root->eventPoint.x))
         return rightRotate(root);
-    if (diff < -1 && index > root->right->index)
+    if (diff < -1 && eventPoint.y > root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x<root->eventPoint.x))
         return leftRotate(root);
-    if (diff > 1 && index > root->left->index){
+    if (diff > 1 && eventPoint.y > root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x<root->eventPoint.x)){
         root->left = leftRotate(root->left);
         return rightRotate(root);
     }
-    if (diff < -1 && index < root->right->index) {
+    if (diff < -1 && eventPoint.y < root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x > root->eventPoint.x)) {
         root->right = rightRotate(root->right);
         return leftRotate(root);
     }

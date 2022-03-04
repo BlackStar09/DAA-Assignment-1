@@ -1,13 +1,24 @@
 #include <bits/stdc++.h>
 
-struct statusTree{
+struct Point{
+    int x;
+    int y;
+};
+
+struct Line{
     int index;
+    Point side1;
+    Point side2;
+};
+
+struct statusTree{
+    Line index;
     statusTree* left;
     statusTree* right;
     int height;
 };
 
-statusTree *createStatusNode(int index) {
+statusTree *createStatusNode(Line index) {
     statusTree *newnode = new statusTree();
     newnode->index = index;
     newnode->left = NULL;
@@ -59,28 +70,28 @@ int heightDiff(statusTree* node){
     return height(node->left) - height(node->right);
 }
 
-statusTree* insert(statusTree* root, int index)
+statusTree* insert(statusTree* root, Line index)
 {
     if (root == NULL)
-        return createStatusNode(index);
+        return createStatusNode(index.index);
  
     //how to insert here?
-    if(index>root->index)
-        root->right=insert(root->right,index);
-    else   
+    if(root->left==NULL)
         root->left=insert(root->left,index);
+    else   
+        root->right=insert(root->right,index);
     root->height =(height(root->left) > height(root->right))? height(root->left) + 1 : height(root->right) + 1 ;
  
     int diff = heightDiff(root);
-    if (diff > 1 && index < root->left->index)
+    if (diff > 1 && index.index < root->left->index)
         return rightRotate(root);
-    if (diff < -1 && index > root->right->index)
+    if (diff < -1 && index.index > root->right->index)
         return leftRotate(root);
-    if (diff > 1 && index > root->left->index){
+    if (diff > 1 && index.index > root->left->index){
         root->left = leftRotate(root->left);
         return rightRotate(root);
     }
-    if (diff < -1 && index < root->right->index) {
+    if (diff < -1 && index.index < root->right->index) {
         root->right = rightRotate(root->right);
         return leftRotate(root);
     }
