@@ -15,9 +15,10 @@ struct Line{
 };
 
 struct eventQueue{
-    Line eventLine;
+    Point eventPoint;
     eventQueue* left;
     eventQueue* right;
+    vector<Line> lineSegments;
     int height;
 };
 
@@ -75,43 +76,46 @@ int heightDiff(eventQueue* node){
     return height(node->left) - height(node->right);
 }
 
-int compare(Line l1, Line l2){
-    if(l1.upper.y>l2.upper.y || 
-      (l1.upper.y == l2.upper.y && l1.upper.x<l2.upper.x) ||
-      (l1.upper.y == l2.upper.y && l1.upper.x==l2.upper.x && l1.lower.y>l2.lower.y) ||
-      (l1.upper.y == l2.upper.y && l1.upper.x==l2.upper.x && l1.lower.y == l2.lower.y) && l1.lower.x<l2.lower.x )
-        return 1;
-    return 0;
-}
-
-eventQueue* inserti(eventQueue* root, Line l1)
+eventQueue* inserti(eventQueue* root, Point eventPoint, vector<Line> lineSegments)
 {
     if (root == NULL)
-        return createeventQueueNode(eventPoint);
+        return createeventQueueNode(eventPoint,lineSegments);
 
     //how to insert here?
-    if(compare(l1,root->eventLine))
-        root->right=inserti(root->right,eventPoint);
+    if(eventPoint.y>root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x<root->eventPoint.x))
+        root->right=inserti(root->right,eventPoint,lineSegments);
+    else if(eventPoint.y==root->eventPoint.y && eventPoint.x==root->eventPoint.x){
+        root->lineSegments.insert(root->lineSegments.end(), lineSegments.begin(), lineSegments.end());
+    }
     else
-        root->left=inserti(root->left,eventPoint);
+        root->left=inserti(root->left,eventPoint,lineSegments);
     root->height =(height(root->left) > height(root->right))? height(root->left) + 1 : height(root->right) + 1 ;
 
     int diff = heightDiff(root);
-    if (diff > 1 && compare(root->eventLine,l1))
+    if (diff > 1 && eventPoint.y < root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x > root->eventPoint.x))
         return rightRotate(root);
-    if (diff < -1 && compare(l1,root->eventLine))
+    if (diff < -1 && eventPoint.y > root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x<root->eventPoint.x))
         return leftRotate(root);
-    if (diff > 1 && compare(l1,root->eventLine)){
+    if (diff > 1 && eventPoint.y > root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x<root->eventPoint.x)){
         root->left = leftRotate(root->left);
         return rightRotate(root);
     }
-    if (diff < -1 && compare(root->eventLine,l1)) {
+    if (diff < -1 && eventPoint.y < root->eventPoint.y || (eventPoint.y == root->eventPoint.y && eventPoint.x > root->eventPoint.x)) {
         root->right = rightRotate(root->right);
         return leftRotate(root);
     }
     return root;
 }
 
+void preOrder(eventQueue *root)
+{
+    if(root != NULL)
+    {
+        preOrder(root->left);
+        cout << root->eventPoint.x << " " <<root->eventPoint.y<<"  ";
+        preOrder(root->right);
+    }
+}
 
 eventQueue * minValueEvent(eventQueue* event)
 {
@@ -151,7 +155,7 @@ eventQueue* deleteEvent(eventQueue* root){
         }
     }
     if (root == NULL)
-        return root;
+    return root;
     root->height = 1 + max(height(root->left),height(root->right));
     int balance = getBalance(root);
     if (balance > 1 && getBalance(root->left) >= 0)
@@ -178,6 +182,7 @@ eventQueue getNextEvent(eventQueue *root){
     eventQueue e = *temp;
     return e;
 }
+
 
 
 int main()
