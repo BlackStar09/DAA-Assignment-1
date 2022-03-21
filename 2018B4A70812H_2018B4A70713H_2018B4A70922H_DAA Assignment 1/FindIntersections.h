@@ -7,12 +7,20 @@
 using namespace std;
 
 class FindIntersections{
+    /*!Private members of the class FindIntersections
+    * Consists of a Status Queue and an Event Queue
+    */
     private:
     event newEvent;
     eventQueue* eq_root = NULL;
     status newStatus = status();
     statusQueue* st_root = NULL;
     public:
+    //!A Constructor for class FindIntersections
+    /*! It makes sure that the lower and upper pairs are ordered correctly before
+    they're inserted into the Event Queue i.e lower points have a teller value of 2 while
+    upper points have a teller value of 1.
+    */
     FindIntersections(vector<Line> &segments){
         for(auto it = segments.begin(); it!=segments.end(); it++){
             double sx, sy, ex, ey;
@@ -54,25 +62,32 @@ class FindIntersections{
             eq_root = newEvent.inserti(eq_root, eventPoint, l1, 2);
         }
     }
-
+    //! A helper function to find the minimum of two integer values.
     int min(int a, int b){
         return (a>b)?b:a;
     }
-
+    //! A member function that checks whether a point q lies on the segment between points p and r.
     bool onSegment(Point p, Point q, Point r){
         if(q.x <= max(p.x, r.x) && q.x >=min(p.x, r.x) && q.y <=max(p.y, r.y) && q.y >= min(p.y, r.y)){
             return true;    
         }
         return false;
     }
-
+    //! Checks the relative orientation of three sets of ordered points.
+    /*! Checks the orientation of an ordered set of triplets (p, q, r)
+    * 0 => p, q and r are collinear
+    * 1=> Clockwise orientation
+    * 2=> Anti-Clockwise Orientation
+    */
     int orientation(Point p, Point q, Point r){
         double val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
         if(val == 0)
-            return 0;
+            return 0; //collinear
         return (val > 0)?1:2; //clockwise, anti-clockwise
     }
-
+    //! Checks whether two lines l1 and l2 intersect.
+    /*! Checks whether the lines l1 and l2 intersect.
+    Returns true if they intersect.*/
     bool checkIntersect(Line l1, Line l2){
         //cout<<"CI"<<endl;
         Point p1, q1, p2, q2;
@@ -102,7 +117,9 @@ class FindIntersections{
             return true;
         return false;
     }
-
+    //*! This function returns the point of intersection (if any) of two lines l1 and l2.
+    /*! It finds the Intersection Point of two lines l1 and l2. The function does this using the determinant method of finding the intersection of two
+    2D lines. (Finds the intersection in O(1))*/
     Point intersectionOf(Line l1, Line l2){
         Point intersect;
         if(checkIntersect(l1, l2) == 0){
@@ -123,6 +140,10 @@ class FindIntersections{
         }
         return intersect;
     }
+    //! A function that is similar to the FineNewEvent(sl, sr, p) function defined in the IEEE Article.
+    /*! The function checks whether the lines l1 and l2 intersect below (or on) the sweep line 
+    and to the right of the current event point p (dependent on whether or not the intersection
+    is not yet present as an event in the Event Queue.*/
     void findNewEvent(Line l1, Line l2, eventQueue* p){
         //cout<<"FNE - 1"<<endl;
         Point newEventPoint = intersectionOf(l1, l2);
@@ -137,7 +158,7 @@ class FindIntersections{
         }
         //cout<<"FNE - END"<<endl;
     }
-
+    //! This helper function checks whether a given line is already present within a vector contatining lines.
     int contains(vector<Line> segments, Line l){
         for(auto it=segments.begin(); it!=segments.end(); it++){
             if((*it).upper.x == l.upper.x && (*it).upper.y == l.upper.y && (*it).lower.x == l.lower.x && (*it).lower.y == l.lower.y){
@@ -146,7 +167,7 @@ class FindIntersections{
         }
         return 1;
     }
-
+    //! This helper function helps us with Union operations (which are useful in the handleEventPoint function).
     vector<Line> unionOf(vector<Line> a, vector<Line> b){
         vector<Line> union_vec;
         for(auto it = a.begin(); it!=a.end(); it++)
@@ -157,13 +178,17 @@ class FindIntersections{
         }
         return union_vec;
     }
-
+    //! A helper function to check whether a given vector is empty.
     bool empty(vector<Line> x){
         if(x.size() == 0)
             return true;
         return false;
     }
 
+    //! A function that deals with event points (and enables new event points to be added).
+    /*! The function is similar to the HandleEventPoint(p) function defined in the IEEE Article.
+    It serves the purpose of adding and removing lines from the status queue as per the rules defined in
+    the IEEE Article.*/
     void handleEventPoint(eventQueue* eventer){
         //cout<<"Process-HEP"<<endl;
         vector<Line> all = unionOf(eventer->L, unionOf(eventer->U, eventer->C));
@@ -223,6 +248,7 @@ class FindIntersections{
         }
     }
 
+    //!Function that is similar to FindIntersections in the context of the IEEE Document.
     void runAlgorithm(){
         while(eq_root!=NULL){
             eventQueue* pop = newEvent.maxValueEvent(eq_root);
