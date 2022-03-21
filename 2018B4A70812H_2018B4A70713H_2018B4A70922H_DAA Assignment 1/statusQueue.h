@@ -5,40 +5,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
+///Structure defining a point
 struct Point{
+    ///X-coordinate
     double x;
+    ///Y-coordinate
     double y;
     int type;
 };
 
+///Structure defining a line
 struct Line{
+    ///Index of line
     int index;
+    ///First point of the line, taken as a point object
     Point upper;
+    ///First point of the line, taken as a point object
     Point lower;
 };
 
+///Structure for the status queue tree
 struct statusQueue{
+    ///Each node takes a line object's data
     Line segment;
+    ///Left child pointer
     statusQueue* left;
+    ///Right child pointer
     statusQueue* right;
+    ///Height of the node, for balancing
     int height;
 };
 
+///This class is used to manipulate the Status Queue tree
 class status{
     
     public:
     int two_insert;
+    ///Constructor for the class
     status(){
         two_insert = 1;
     }
 
+    ///Function which returns height of the node, for balancing
     int height(statusQueue* node){
         if(node == NULL)
             return 0;
         return node->height;
     }
 
+    //! Function to create an status queue node for insertion. Takes in the Line segment to be inserted
     statusQueue *createStatusQueueNode(Line segment) {
         statusQueue *newnode = new statusQueue();
         newnode->segment = segment;
@@ -48,7 +63,7 @@ class status{
         return newnode;
     }
 
-
+    ///Rotate the node toward the right, used in some cases while tree balancing
     statusQueue *rightRotate(statusQueue *y){
         statusQueue *x = y->left;
         statusQueue *z = x->right;
@@ -65,6 +80,7 @@ class status{
         return x;
     }
 
+    ///Rotate the node toward the left, used in some cases while tree balancing
     statusQueue *leftRotate(statusQueue *y){
         statusQueue *x = y->right;
         statusQueue *z = x->left;
@@ -81,6 +97,7 @@ class status{
         return x;
     }
 
+    ///Used in tree balancing, specifically gets the difference in heights between the left and right children
     int getBalance(statusQueue *N)
     {
         if (N == NULL)
@@ -88,12 +105,17 @@ class status{
         return height(N->left) - height(N->right);
     }
 
+    ///Used in tree balancing, specifically gets the difference in heights between the left and right children
     int heightDiff(statusQueue* node){
         if(node == NULL)
             return 0;
         return height(node->left) - height(node->right);
     }
 
+    //! Special Comparator for the Status queue tree
+    /*! The Status queue does not order the nodes the way a normal tree does
+    * It comapres the slope of the two lines to decide which side of the tree the node must enter.
+    */
     int compare(Line l1, Line l2, double y){
         int x1 = (y-l1.lower.y)*((l1.lower.x-l1.upper.x)/(l1.lower.y - l1.upper.y))+l1.lower.x;
         int x2 = (y-l2.lower.y)*((l2.lower.x-l2.upper.x)/(l2.lower.y - l2.upper.y))+l2.lower.x;
@@ -105,16 +127,23 @@ class status{
             return 0;
     }
 
+    /// Returns the X coordinate, for comparison  
     double sloper(Line l1, double y){
         if(l1.lower.y - l1.upper.y != 0)
             return ((y - l1.lower.y)*(l1.lower.x - l1.upper.x)/(l1.lower.y - l1.upper.y)) + l1.lower.x;
         else
             return ((y - l1.lower.y)*(l1.lower.x - l1.upper.x)/(l1.lower.y - l1.upper.y + 1e-15)) + l1.lower.x;
     }
+
+    ///Returns the max between two integers
     int max(int a, int b){
         int maxer = a>b?a:b;
         return maxer;
     }
+
+    //! Function to insert a point into the status.
+    /*! Takes the line segment, y coordinate in order to calculate the slope of the line for the comparator
+        After the Line is inserted, rotations are performed to maintain the balanced property of the Status queue */
     statusQueue* inserti(statusQueue* root, Line l1, double y_coor)
     {
         /*if (root == NULL)
@@ -188,7 +217,7 @@ class status{
         return root;
     }
 
-
+    ///Function that returns the next status queue node
     statusQueue * minValueSegment(statusQueue* segment)
     {
         statusQueue* current = segment;
@@ -198,7 +227,7 @@ class status{
     }
 
     
-
+    ///Function to delete the status queue node from the tree
     statusQueue* deleteSegment(statusQueue* root, Line l1, double y_coor){
         /*if (root == NULL)
             return root;
@@ -285,6 +314,7 @@ class status{
         return root;
     }
 
+    ///Preorder Traversal of the tree, used for debugging mainly
     void preOrder(statusQueue* root){
         if(root!=NULL){
             cout<<root->segment.upper.x<<" "<<root->segment.upper.y<<" "<<root->segment.lower.x<<" "<<root->segment.lower.y<<" "<<root->height<<endl;
@@ -293,6 +323,7 @@ class status{
         }
     }
 
+    ///Function that returns the left neighbor of a node, very crucial in the algorithm to determine the node in the status queue.
     void getLeftNeighbor(statusQueue* node, Line l1, double y_coor, Line* lastRight){
         //cout<<"Entered Left Neighbor"<<node->height<<endl;
         //cout<<l1.upper.x<<" "<<l1.upper.y<<endl;
@@ -313,6 +344,7 @@ class status{
         }
     }
 
+    ///Function that returns the right neighbor of a node, very crucial in the algorithm to determine the node in the status queue.
     void getRightNeighbor(statusQueue* node, Line l1, double y_coor, Line* lastLeft){
         //cout<<"Entered Right Neighbor"<<node->height<<endl;
         //cout<<l1.upper.x<<" "<<l1.upper.y<<endl;
@@ -332,6 +364,7 @@ class status{
         //cout<<"Exit Right Neighbor"<<endl;
     }
     
+    ///Function that returns both the neighbors of a node, given the point (taken in x_coor and y_coor)
     void getNeighbors(statusQueue* node, double x_coor, double y_coor, Line* lastRight, Line* lastLeft){
         if(node->height == 1){
             if(lastRight->upper.x == -1){
