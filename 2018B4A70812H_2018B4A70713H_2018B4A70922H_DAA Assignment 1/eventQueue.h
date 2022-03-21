@@ -19,6 +19,8 @@ struct Line{
     Point lower;
 };*/
 
+//! Structure used to build the event queue.
+/*! Consists of the point, left and right pointers and the line segments to which the point belongs. */
 struct eventQueue{
     Point eventPoint;
     eventQueue* left;
@@ -32,17 +34,24 @@ struct eventQueue{
 class event{
     private:
     public:
-
+    
+    //! A helper function to find the maximum of two integer values.
     int max(int a, int b){
         return (a>b)?a:b;
     }
-
+    
+    //! A helper function that return the height of a node in the event queue.
     int height(eventQueue* node){
         if(node == NULL)
             return 0;
         return node->height;
     }
     
+    //! Function to create an event queue node for insertion.
+    /*! The variable teller gives us the type of point
+    * 1 => the point is an upper endpoint of l1
+    * 2 => the point is a lower endpoint of l1
+    */
     eventQueue *createeventQueueNode(Point eventPoint, int teller, Line l1) {
         eventQueue *newnode = new eventQueue();
         newnode->eventPoint = eventPoint;
@@ -61,7 +70,7 @@ class event{
    
 
     
-
+    //! Function that performs the right rotation to keep the tree balanced.
     eventQueue *rightRotate(eventQueue *y){
         eventQueue *x = y->left;
         eventQueue *z = x->right;
@@ -77,7 +86,8 @@ class event{
             x->height=height(x->right)+1;
         return x;
     }
-
+    
+    //! Function that performs the left rotation to keep the tree balanced.
     eventQueue *leftRotate(eventQueue *y){
         eventQueue *x = y->right;
         eventQueue *z = x->left;
@@ -94,12 +104,16 @@ class event{
         return x;
     }
 
+    //! A helper function that calculates the difference between the heights of a node's children.
     int heightDiff(eventQueue* node){
         if(node == NULL)
             return 0;
         return height(node->left) - height(node->right);
     }
 
+    //! Function to insert a point into the event queue.
+    /*! Takes the point, line segment of which it is a part, its type and inserts it into the event queue accordingly
+        After the point is inserted, rotations are performed to maintain the balanced property of the event queue */
     eventQueue* inserti(eventQueue* root, Point eventPoint, Line l1, int teller)
     {
         if (root == NULL){
@@ -191,6 +205,7 @@ class event{
         }
     }*/
 
+    //! Function that returns the next event point from the event queue.
     eventQueue * minValueEvent(eventQueue* event)
     {
         eventQueue* current = event;
@@ -199,13 +214,15 @@ class event{
         return current;
     }
 
+    //! A helper function that calculates the difference between the heights of a node's children.
     int getBalance(eventQueue *N)
     {
         if (N == NULL)
             return 0;
         return height(N->left) - height(N->right);
     }
-
+    
+    //! Function that deletes the the next event point from the event queue.
     eventQueue* deleteEvent(eventQueue* root){
         if (root == NULL)
             return root;
@@ -250,6 +267,8 @@ class event{
         return root;
     }
 
+    //! Function that deletes a node from the event queue.
+    /*! Given the x and y coordinates of a point, it recursively searches for the point and then deletes it */
     eventQueue* deleteNode(eventQueue* root, double x, double y){
         if(root == NULL)
             return root;
@@ -299,6 +318,7 @@ class event{
         return root;
     }
 
+    //! Function that returns the next event point from the event queue.
     eventQueue getNextEvent(eventQueue *root){
         eventQueue *temp = root;
         while(temp->right!=NULL){
@@ -309,6 +329,7 @@ class event{
     }
 
 
+    //! Function that returns the max value node in the right subtree of the given node.
     eventQueue* maxValueEvent(eventQueue* node){
         eventQueue* current = node;
         if(current == NULL)
@@ -318,6 +339,7 @@ class event{
         return current;
     }
     
+    //! Helper function that allows us to traverse to the event queue.
     void preOrder(eventQueue* root){
         if(root!=NULL){
             cout<<root->eventPoint.x<<" "<<root->eventPoint.y<<" "<<root->height<<endl;
