@@ -1,0 +1,343 @@
+\hypertarget{event_queue_8h_source}{}\doxysection{event\+Queue.\+h}
+\label{event_queue_8h_source}\index{DAA-\/Assignment-\/1/2018B4A70812H\_2018B4A70713H\_2018B4A70922H\_DAA Assignment 1/eventQueue.h@{DAA-\/Assignment-\/1/2018B4A70812H\_2018B4A70713H\_2018B4A70922H\_DAA Assignment 1/eventQueue.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef EVENTQUEUE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define EVENTQUEUE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <bits/stdc++.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}statusQueue.h"{}}}
+\DoxyCodeLine{7 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{comment}{/*struct Point\{}}
+\DoxyCodeLine{11 \textcolor{comment}{    int x;}}
+\DoxyCodeLine{12 \textcolor{comment}{    int y;}}
+\DoxyCodeLine{13 \textcolor{comment}{    int type;}}
+\DoxyCodeLine{14 \textcolor{comment}{\};}}
+\DoxyCodeLine{15 \textcolor{comment}{}}
+\DoxyCodeLine{16 \textcolor{comment}{struct Line\{}}
+\DoxyCodeLine{17 \textcolor{comment}{    int index;}}
+\DoxyCodeLine{18 \textcolor{comment}{    Point upper;}}
+\DoxyCodeLine{19 \textcolor{comment}{    Point lower;}}
+\DoxyCodeLine{20 \textcolor{comment}{\};*/}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{struct }\mbox{\hyperlink{structevent_queue}{eventQueue}}\{}
+\DoxyCodeLine{25     \mbox{\hyperlink{struct_point}{Point}} eventPoint;}
+\DoxyCodeLine{26     \mbox{\hyperlink{structevent_queue}{eventQueue}}* left;}
+\DoxyCodeLine{27     \mbox{\hyperlink{structevent_queue}{eventQueue}}* right;}
+\DoxyCodeLine{28     vector<Line> U;}
+\DoxyCodeLine{29     vector<Line> C;}
+\DoxyCodeLine{30     vector<Line> L;}
+\DoxyCodeLine{31     \textcolor{keywordtype}{int} height;}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{keyword}{class }\mbox{\hyperlink{classevent}{event}}\{}
+\DoxyCodeLine{35     \textcolor{keyword}{private}:}
+\DoxyCodeLine{36     \textcolor{keyword}{public}:}
+\DoxyCodeLine{37     }
+\DoxyCodeLine{39     \textcolor{keywordtype}{int} \mbox{\hyperlink{classevent_a65b3a714b1f18fb78ba526267e74ae3d}{max}}(\textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b)\{}
+\DoxyCodeLine{40         \textcolor{keywordflow}{return} (a>b)?a:b;}
+\DoxyCodeLine{41     \}}
+\DoxyCodeLine{42     }
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} \mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(\mbox{\hyperlink{structevent_queue}{eventQueue}}* node)\{}
+\DoxyCodeLine{45         \textcolor{keywordflow}{if}(node == NULL)}
+\DoxyCodeLine{46             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{47         \textcolor{keywordflow}{return} node-\/>height;}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49     }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{55     \mbox{\hyperlink{structevent_queue}{eventQueue}} *\mbox{\hyperlink{classevent_a4a1e444b3bb36212d858eb3c5cfec2bb}{createeventQueueNode}}(\mbox{\hyperlink{struct_point}{Point}} eventPoint, \textcolor{keywordtype}{int} teller, \mbox{\hyperlink{struct_line}{Line}} l1) \{}
+\DoxyCodeLine{56         \mbox{\hyperlink{structevent_queue}{eventQueue}} *newnode = \textcolor{keyword}{new} \mbox{\hyperlink{structevent_queue}{eventQueue}}();}
+\DoxyCodeLine{57         newnode-\/>eventPoint = eventPoint;}
+\DoxyCodeLine{58         \textcolor{keywordflow}{if}(teller == 1)}
+\DoxyCodeLine{59             newnode-\/>U.push\_back(l1);}
+\DoxyCodeLine{60         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(teller == 2)}
+\DoxyCodeLine{61             newnode-\/>L.push\_back(l1);}
+\DoxyCodeLine{62         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{63             newnode-\/>C.push\_back(l1);}
+\DoxyCodeLine{64         newnode-\/>height = 1;}
+\DoxyCodeLine{65         newnode-\/>left = NULL;}
+\DoxyCodeLine{66         newnode-\/>right = NULL;}
+\DoxyCodeLine{67         \textcolor{keywordflow}{return} newnode;}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70    }
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     }
+\DoxyCodeLine{74     \mbox{\hyperlink{structevent_queue}{eventQueue}} *\mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(\mbox{\hyperlink{structevent_queue}{eventQueue}} *y)\{}
+\DoxyCodeLine{75         \mbox{\hyperlink{structevent_queue}{eventQueue}} *x = y-\/>left;}
+\DoxyCodeLine{76         \mbox{\hyperlink{structevent_queue}{eventQueue}} *z = x-\/>right;}
+\DoxyCodeLine{77         x-\/>right = y;}
+\DoxyCodeLine{78         y-\/>left = z;}
+\DoxyCodeLine{79         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(y-\/>left)>(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(y-\/>right)+1))}
+\DoxyCodeLine{80             y-\/>height=\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(y-\/>left);}
+\DoxyCodeLine{81         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{82             y-\/>height=\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(y-\/>right)+1;}
+\DoxyCodeLine{83         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(x-\/>left)>(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(x-\/>right)+1))}
+\DoxyCodeLine{84             x-\/>height=\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(x-\/>left);}
+\DoxyCodeLine{85         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{86             x-\/>height=\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(x-\/>right)+1;}
+\DoxyCodeLine{87         \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{88     \}}
+\DoxyCodeLine{89     }
+\DoxyCodeLine{91     \mbox{\hyperlink{structevent_queue}{eventQueue}} *\mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(\mbox{\hyperlink{structevent_queue}{eventQueue}} *y)\{}
+\DoxyCodeLine{92         \mbox{\hyperlink{structevent_queue}{eventQueue}} *x = y-\/>right;}
+\DoxyCodeLine{93         \mbox{\hyperlink{structevent_queue}{eventQueue}} *z = x-\/>left;}
+\DoxyCodeLine{94         x-\/>left = y;}
+\DoxyCodeLine{95         y-\/>right = z;}
+\DoxyCodeLine{96         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(y-\/>left)>(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(y-\/>right)+1))}
+\DoxyCodeLine{97             y-\/>height=\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(y-\/>left);}
+\DoxyCodeLine{98         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{99             y-\/>height=\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(y-\/>right)+1;}
+\DoxyCodeLine{100         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(x-\/>left)>(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(x-\/>right)+1))}
+\DoxyCodeLine{101             x-\/>height=\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(x-\/>left);}
+\DoxyCodeLine{102         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{103             x-\/>height=\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(x-\/>right)+1;}
+\DoxyCodeLine{104         \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{105     \}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{108     \textcolor{keywordtype}{int} \mbox{\hyperlink{classevent_acb0b1e7cca05e152a4abfed86ec83232}{heightDiff}}(\mbox{\hyperlink{structevent_queue}{eventQueue}}* node)\{}
+\DoxyCodeLine{109         \textcolor{keywordflow}{if}(node == NULL)}
+\DoxyCodeLine{110             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{111         \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(node-\/>left) -\/ \mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(node-\/>right);}
+\DoxyCodeLine{112     \}}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{115 }
+\DoxyCodeLine{117     \mbox{\hyperlink{structevent_queue}{eventQueue}}* \mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(\mbox{\hyperlink{structevent_queue}{eventQueue}}* root, \mbox{\hyperlink{struct_point}{Point}} eventPoint, \mbox{\hyperlink{struct_line}{Line}} l1, \textcolor{keywordtype}{int} teller)}
+\DoxyCodeLine{118     \{}
+\DoxyCodeLine{119         \textcolor{keywordflow}{if} (root == NULL)\{}
+\DoxyCodeLine{120             \textcolor{comment}{//cout<<"{}Creating Node"{}<<endl;}}
+\DoxyCodeLine{121             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_a4a1e444b3bb36212d858eb3c5cfec2bb}{createeventQueueNode}}(eventPoint, teller, l1);}
+\DoxyCodeLine{122         \}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124         \textcolor{comment}{//how to insert here?}}
+\DoxyCodeLine{125         \textcolor{keywordflow}{if}(eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}<root-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})\{}
+\DoxyCodeLine{126             \textcolor{comment}{//cout<<"{}Moving Left"{}<<endl;}}
+\DoxyCodeLine{127             root-\/>left=\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(root-\/>left,eventPoint, l1, teller);}
+\DoxyCodeLine{128         \}}
+\DoxyCodeLine{129         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}>root-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})\{}
+\DoxyCodeLine{130             \textcolor{comment}{//cout<<"{}Moving Right"{}<<endl;}}
+\DoxyCodeLine{131             root-\/>right=\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(root-\/>right, eventPoint, l1, teller);}
+\DoxyCodeLine{132         \}}
+\DoxyCodeLine{133         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}>root-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})\{}
+\DoxyCodeLine{134             \textcolor{comment}{//cout<<"{}Moving Left"{}<<endl;}}
+\DoxyCodeLine{135             root-\/>left=\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(root-\/>left, eventPoint, l1, teller);}
+\DoxyCodeLine{136         \}}
+\DoxyCodeLine{137         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}<root-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})\{}
+\DoxyCodeLine{138             \textcolor{comment}{//cout<<"{}Moving Right"{}<<endl;}}
+\DoxyCodeLine{139             root-\/>right=\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(root-\/>right, eventPoint, l1, teller);}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{142             \textcolor{keywordtype}{int} checkex = 1;}
+\DoxyCodeLine{143             \textcolor{keywordflow}{if}(teller == 1)\{}
+\DoxyCodeLine{144                 \textcolor{comment}{//int checkex = 1;}}
+\DoxyCodeLine{145                 \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it=root-\/>U.begin(); it!=root-\/>U.end(); it++)\{}
+\DoxyCodeLine{146                     \textcolor{keywordflow}{if}((*it).upper.x == l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} \&\& (*it).upper.y == l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} \&\& (*it).lower.x == l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} \&\& (*it).lower.y == l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})}
+\DoxyCodeLine{147                         checkex = 0;}
+\DoxyCodeLine{148                 \}}
+\DoxyCodeLine{149                 \textcolor{keywordflow}{if}(checkex)\{}
+\DoxyCodeLine{150                     root-\/>U.push\_back(l1);}
+\DoxyCodeLine{151                 \}}
+\DoxyCodeLine{152             \}}
+\DoxyCodeLine{153             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(teller == 2)\{}
+\DoxyCodeLine{154                 \textcolor{comment}{//int checkex = 1;}}
+\DoxyCodeLine{155                 \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it=root-\/>L.begin(); it!=root-\/>L.end(); it++)\{}
+\DoxyCodeLine{156                     \textcolor{keywordflow}{if}((*it).upper.x == l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} \&\& (*it).upper.y == l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} \&\& (*it).lower.x == l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} \&\& (*it).lower.y == l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})}
+\DoxyCodeLine{157                         checkex = 0;}
+\DoxyCodeLine{158                 \}}
+\DoxyCodeLine{159                 \textcolor{keywordflow}{if}(checkex)\{}
+\DoxyCodeLine{160                     root-\/>L.push\_back(l1);}
+\DoxyCodeLine{161                 \}}
+\DoxyCodeLine{162             \}}
+\DoxyCodeLine{163             \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{164                 \textcolor{comment}{//int checkex = 1;}}
+\DoxyCodeLine{165                 \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it=root-\/>C.begin(); it!=root-\/>C.end(); it++)\{}
+\DoxyCodeLine{166                     \textcolor{keywordflow}{if}((*it).upper.x == l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} \&\& (*it).upper.y == l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} \&\& (*it).lower.x == l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} \&\& (*it).lower.y == l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})}
+\DoxyCodeLine{167                         checkex = 0;}
+\DoxyCodeLine{168                 \}}
+\DoxyCodeLine{169                 \textcolor{keywordflow}{if}(checkex)\{}
+\DoxyCodeLine{170                     root-\/>C.push\_back(l1);}
+\DoxyCodeLine{171                 \}}
+\DoxyCodeLine{172             \}}
+\DoxyCodeLine{173             \textcolor{keywordflow}{if}(checkex == 0)}
+\DoxyCodeLine{174                 \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{175         \}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177         root-\/>height =(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(root-\/>left) > \mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(root-\/>right))? \mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(root-\/>left) + 1 : \mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(root-\/>right) + 1 ;}
+\DoxyCodeLine{178         \textcolor{comment}{//cout<<"{}Started Balancing -\/ "{}<<endl;}}
+\DoxyCodeLine{179         \textcolor{keywordtype}{int} diff = \mbox{\hyperlink{classevent_acb0b1e7cca05e152a4abfed86ec83232}{heightDiff}}(root);}
+\DoxyCodeLine{180         \textcolor{comment}{//cout<<diff<<endl;}}
+\DoxyCodeLine{181         \textcolor{keywordflow}{if} (diff > 1 \&\& (eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} < root-\/>left-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} || (eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} == root-\/>left-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} \&\& eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} > root-\/>left-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})))}
+\DoxyCodeLine{182             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(root);}
+\DoxyCodeLine{183         \textcolor{keywordflow}{if} (diff < -\/1 \&\& (eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} > root-\/>right-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} || (eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} == root-\/>right-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} \&\& eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}<root-\/>right-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})))}
+\DoxyCodeLine{184             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(root);}
+\DoxyCodeLine{185         \textcolor{keywordflow}{if} (diff > 1 \&\& (eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} > root-\/>left-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} || (eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} == root-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} \&\& eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}<root-\/>left-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})))\{}
+\DoxyCodeLine{186             root-\/>left = \mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(root-\/>left);}
+\DoxyCodeLine{187             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(root);}
+\DoxyCodeLine{188         \}}
+\DoxyCodeLine{189         \textcolor{keywordflow}{if} (diff < -\/1 \&\& (eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} < root-\/>right-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} || (eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} == root-\/>right-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} \&\& eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} > root-\/>right-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}))) \{}
+\DoxyCodeLine{190             \textcolor{comment}{//cout<<"{}Case-\/4"{}<<endl;}}
+\DoxyCodeLine{191             root-\/>right = \mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(root-\/>right);}
+\DoxyCodeLine{192             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(root);}
+\DoxyCodeLine{193         \}}
+\DoxyCodeLine{194         \textcolor{comment}{//cout<<"{}Balancing Completed"{}<<endl;}}
+\DoxyCodeLine{195         \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{196     \}}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{198     \textcolor{comment}{/*void preOrder(eventQueue *root)}}
+\DoxyCodeLine{199 \textcolor{comment}{    \{}}
+\DoxyCodeLine{200 \textcolor{comment}{        if(root != NULL)}}
+\DoxyCodeLine{201 \textcolor{comment}{        \{}}
+\DoxyCodeLine{202 \textcolor{comment}{            preOrder(root-\/>left);}}
+\DoxyCodeLine{203 \textcolor{comment}{            cout << root-\/>eventPoint.x << "{} "{} <<root-\/>eventPoint.y<<"{}  "{};}}
+\DoxyCodeLine{204 \textcolor{comment}{            preOrder(root-\/>right);}}
+\DoxyCodeLine{205 \textcolor{comment}{        \}}}
+\DoxyCodeLine{206 \textcolor{comment}{    \}*/}}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{209     \mbox{\hyperlink{structevent_queue}{eventQueue}} * \mbox{\hyperlink{classevent_ab1c07752d21931a9bbc63e0c480d8020}{minValueEvent}}(\mbox{\hyperlink{structevent_queue}{eventQueue}}* \mbox{\hyperlink{classevent}{event}})}
+\DoxyCodeLine{210     \{}
+\DoxyCodeLine{211         \mbox{\hyperlink{structevent_queue}{eventQueue}}* current = \mbox{\hyperlink{classevent}{event}};}
+\DoxyCodeLine{212         \textcolor{keywordflow}{while} (current-\/>left != NULL)}
+\DoxyCodeLine{213             current = current-\/>left;}
+\DoxyCodeLine{214         \textcolor{keywordflow}{return} current;}
+\DoxyCodeLine{215     \}}
+\DoxyCodeLine{216 }
+\DoxyCodeLine{218     \textcolor{keywordtype}{int} \mbox{\hyperlink{classevent_ab370c621140b46ca2abf7fcbcd625b75}{getBalance}}(\mbox{\hyperlink{structevent_queue}{eventQueue}} *N)}
+\DoxyCodeLine{219     \{}
+\DoxyCodeLine{220         \textcolor{keywordflow}{if} (N == NULL)}
+\DoxyCodeLine{221             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{222         \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(N-\/>left) -\/ \mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(N-\/>right);}
+\DoxyCodeLine{223     \}}
+\DoxyCodeLine{224     }
+\DoxyCodeLine{226     \mbox{\hyperlink{structevent_queue}{eventQueue}}* \mbox{\hyperlink{classevent_ab546deb435e62b2be106157639d8a9bd}{deleteEvent}}(\mbox{\hyperlink{structevent_queue}{eventQueue}}* root)\{}
+\DoxyCodeLine{227         \textcolor{keywordflow}{if} (root == NULL)}
+\DoxyCodeLine{228             \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{229         \textcolor{keywordflow}{if}(root-\/>right!=NULL)}
+\DoxyCodeLine{230             root-\/>right = \mbox{\hyperlink{classevent_ab546deb435e62b2be106157639d8a9bd}{deleteEvent}}(root-\/>right);}
+\DoxyCodeLine{231         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{232             \textcolor{keywordflow}{if}( (root-\/>left == NULL)||(root-\/>right == NULL))\{}
+\DoxyCodeLine{233                 \mbox{\hyperlink{structevent_queue}{eventQueue}} *temp = root-\/>left ? root-\/>left : root-\/>right;}
+\DoxyCodeLine{234                 \textcolor{keywordflow}{if} (temp == NULL)\{}
+\DoxyCodeLine{235                     temp = root;}
+\DoxyCodeLine{236                     root = NULL;}
+\DoxyCodeLine{237                 \}}
+\DoxyCodeLine{238                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{239                 *root = *temp;}
+\DoxyCodeLine{240                 free(temp);}
+\DoxyCodeLine{241             \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{242                 \mbox{\hyperlink{structevent_queue}{eventQueue}}* temp = \mbox{\hyperlink{classevent_ab1c07752d21931a9bbc63e0c480d8020}{minValueEvent}}(root-\/>right);}
+\DoxyCodeLine{243                 root-\/>eventPoint = temp-\/>eventPoint;}
+\DoxyCodeLine{244                 root-\/>U = temp-\/>U;}
+\DoxyCodeLine{245                 root-\/>L = temp-\/>L;}
+\DoxyCodeLine{246                 root-\/>C = temp-\/>C;}
+\DoxyCodeLine{247                 root-\/>right = \mbox{\hyperlink{classevent_ab546deb435e62b2be106157639d8a9bd}{deleteEvent}}(root-\/>right);}
+\DoxyCodeLine{248             \}}
+\DoxyCodeLine{249         \}}
+\DoxyCodeLine{250         \textcolor{keywordflow}{if} (root == NULL)}
+\DoxyCodeLine{251         \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{252         root-\/>height = 1 + \mbox{\hyperlink{classevent_a65b3a714b1f18fb78ba526267e74ae3d}{max}}(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(root-\/>left),\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(root-\/>right));}
+\DoxyCodeLine{253         \textcolor{keywordtype}{int} balance = \mbox{\hyperlink{classevent_ab370c621140b46ca2abf7fcbcd625b75}{getBalance}}(root);}
+\DoxyCodeLine{254         \textcolor{keywordflow}{if} (balance > 1 \&\& \mbox{\hyperlink{classevent_ab370c621140b46ca2abf7fcbcd625b75}{getBalance}}(root-\/>left) >= 0)}
+\DoxyCodeLine{255             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(root);}
+\DoxyCodeLine{256         \textcolor{keywordflow}{if} (balance > 1 \&\& \mbox{\hyperlink{classevent_ab370c621140b46ca2abf7fcbcd625b75}{getBalance}}(root-\/>left) < 0)\{}
+\DoxyCodeLine{257             root-\/>left = \mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(root-\/>left);}
+\DoxyCodeLine{258             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(root);}
+\DoxyCodeLine{259         \}}
+\DoxyCodeLine{260         \textcolor{keywordflow}{if} (balance < -\/1 \&\& \mbox{\hyperlink{classevent_ab370c621140b46ca2abf7fcbcd625b75}{getBalance}}(root-\/>right) <= 0)}
+\DoxyCodeLine{261             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(root);}
+\DoxyCodeLine{262         \textcolor{keywordflow}{if} (balance < -\/1 \&\& \mbox{\hyperlink{classevent_ab370c621140b46ca2abf7fcbcd625b75}{getBalance}}(root-\/>right) > 0)\{}
+\DoxyCodeLine{263             root-\/>right = \mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(root-\/>right);}
+\DoxyCodeLine{264             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(root);}
+\DoxyCodeLine{265         \}}
+\DoxyCodeLine{266 }
+\DoxyCodeLine{267         \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{268     \}}
+\DoxyCodeLine{269 }
+\DoxyCodeLine{271 }
+\DoxyCodeLine{272     \mbox{\hyperlink{structevent_queue}{eventQueue}}* \mbox{\hyperlink{classevent_aae783e657c37c9850a9f5cff3e525b10}{deleteNode}}(\mbox{\hyperlink{structevent_queue}{eventQueue}}* root, \textcolor{keywordtype}{double} x, \textcolor{keywordtype}{double} y)\{}
+\DoxyCodeLine{273         \textcolor{keywordflow}{if}(root == NULL)}
+\DoxyCodeLine{274             \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{275         \textcolor{keywordflow}{if}(y < root-\/>eventPoint.y)}
+\DoxyCodeLine{276             root-\/>left = \mbox{\hyperlink{classevent_aae783e657c37c9850a9f5cff3e525b10}{deleteNode}}(root-\/>left, x , y);}
+\DoxyCodeLine{277         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(y > root-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})}
+\DoxyCodeLine{278             root-\/>right = \mbox{\hyperlink{classevent_aae783e657c37c9850a9f5cff3e525b10}{deleteNode}}(root-\/>right, x, y);}
+\DoxyCodeLine{279         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(x > root-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})}
+\DoxyCodeLine{280             root-\/>left = \mbox{\hyperlink{classevent_aae783e657c37c9850a9f5cff3e525b10}{deleteNode}}(root-\/>left, x, y);}
+\DoxyCodeLine{281         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(x < root-\/>eventPoint.x)}
+\DoxyCodeLine{282             root-\/>right = \mbox{\hyperlink{classevent_aae783e657c37c9850a9f5cff3e525b10}{deleteNode}}(root-\/>right, x, y);}
+\DoxyCodeLine{283         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{284             \textcolor{keywordflow}{if}((root-\/>left == NULL) || (root-\/>right == NULL))\{}
+\DoxyCodeLine{285                 \mbox{\hyperlink{structevent_queue}{eventQueue}}* temp = root-\/>left ? root-\/>left:root-\/>right;}
+\DoxyCodeLine{286                 \textcolor{keywordflow}{if}(temp == NULL)\{}
+\DoxyCodeLine{287                     temp = root;}
+\DoxyCodeLine{288                     root = NULL;}
+\DoxyCodeLine{289                 \}\textcolor{keywordflow}{else}}
+\DoxyCodeLine{290                     *root = *temp;}
+\DoxyCodeLine{291                 free(temp);}
+\DoxyCodeLine{292             \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{293                 \mbox{\hyperlink{structevent_queue}{eventQueue}}* temp = \mbox{\hyperlink{classevent_ab1c07752d21931a9bbc63e0c480d8020}{minValueEvent}}(root-\/>right);}
+\DoxyCodeLine{294                 root-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = temp-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{295                 root-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = temp-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}};}
+\DoxyCodeLine{296                 root-\/>U = temp-\/>U;}
+\DoxyCodeLine{297                 root-\/>L = temp-\/>L;}
+\DoxyCodeLine{298                 root-\/>C = temp-\/>C;}
+\DoxyCodeLine{299                 root-\/>right = \mbox{\hyperlink{classevent_aae783e657c37c9850a9f5cff3e525b10}{deleteNode}}(root-\/>right, temp-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}, temp-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}});}
+\DoxyCodeLine{300             \}}
+\DoxyCodeLine{301         \}}
+\DoxyCodeLine{302         \textcolor{keywordflow}{if}(root == NULL)}
+\DoxyCodeLine{303             \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{304         root-\/>height = 1 + \mbox{\hyperlink{classevent_a65b3a714b1f18fb78ba526267e74ae3d}{max}}(\mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(root-\/>left), \mbox{\hyperlink{classevent_ad91717c461f2394193b06170394a753b}{height}}(root-\/>right));}
+\DoxyCodeLine{305         \textcolor{keywordtype}{int} balance = \mbox{\hyperlink{classevent_acb0b1e7cca05e152a4abfed86ec83232}{heightDiff}}(root);}
+\DoxyCodeLine{306         \textcolor{keywordflow}{if}(balance > 1 \&\& \mbox{\hyperlink{classevent_acb0b1e7cca05e152a4abfed86ec83232}{heightDiff}}(root-\/>left) >= 0)}
+\DoxyCodeLine{307             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(root);}
+\DoxyCodeLine{308         \textcolor{keywordflow}{if}(balance > 1 \&\& \mbox{\hyperlink{classevent_acb0b1e7cca05e152a4abfed86ec83232}{heightDiff}}(root-\/>left) < 0)\{}
+\DoxyCodeLine{309             root-\/>left = \mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(root-\/>left);}
+\DoxyCodeLine{310             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(root);}
+\DoxyCodeLine{311         \}}
+\DoxyCodeLine{312         \textcolor{keywordflow}{if}(balance < -\/1 \&\& \mbox{\hyperlink{classevent_acb0b1e7cca05e152a4abfed86ec83232}{heightDiff}}(root-\/>right) <= 0)}
+\DoxyCodeLine{313             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(root);}
+\DoxyCodeLine{314         \textcolor{keywordflow}{if}(balance < -\/1 \&\& \mbox{\hyperlink{classevent_acb0b1e7cca05e152a4abfed86ec83232}{heightDiff}}(root-\/>right) > 0)\{}
+\DoxyCodeLine{315             root-\/>right = \mbox{\hyperlink{classevent_a65535e9ae92274c9f4a1c593b8af6059}{rightRotate}}(root-\/>right);}
+\DoxyCodeLine{316             \textcolor{keywordflow}{return} \mbox{\hyperlink{classevent_ad127d1934dc45f69522c94e0d283d920}{leftRotate}}(root);}
+\DoxyCodeLine{317         \}}
+\DoxyCodeLine{318         \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{319     \}}
+\DoxyCodeLine{320 }
+\DoxyCodeLine{322     \mbox{\hyperlink{structevent_queue}{eventQueue}} \mbox{\hyperlink{classevent_acb8202e97d6216e2190a6d25322ac5f7}{getNextEvent}}(\mbox{\hyperlink{structevent_queue}{eventQueue}} *root)\{}
+\DoxyCodeLine{323         \mbox{\hyperlink{structevent_queue}{eventQueue}} *temp = root;}
+\DoxyCodeLine{324         \textcolor{keywordflow}{while}(temp-\/>right!=NULL)\{}
+\DoxyCodeLine{325             temp = temp-\/>right;}
+\DoxyCodeLine{326         \}}
+\DoxyCodeLine{327         \mbox{\hyperlink{structevent_queue}{eventQueue}} e = *temp;}
+\DoxyCodeLine{328         \textcolor{keywordflow}{return} e;}
+\DoxyCodeLine{329     \}}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{331 }
+\DoxyCodeLine{333     \mbox{\hyperlink{structevent_queue}{eventQueue}}* \mbox{\hyperlink{classevent_a5816a478cc295b8f58edfe2fc5337481}{maxValueEvent}}(\mbox{\hyperlink{structevent_queue}{eventQueue}}* node)\{}
+\DoxyCodeLine{334         \mbox{\hyperlink{structevent_queue}{eventQueue}}* current = node;}
+\DoxyCodeLine{335         \textcolor{keywordflow}{if}(current == NULL)}
+\DoxyCodeLine{336             \textcolor{keywordflow}{return} current;}
+\DoxyCodeLine{337         \textcolor{keywordflow}{while}(current-\/>right != NULL)}
+\DoxyCodeLine{338             current = current-\/>right;}
+\DoxyCodeLine{339         \textcolor{keywordflow}{return} current;}
+\DoxyCodeLine{340     \}}
+\DoxyCodeLine{341     }
+\DoxyCodeLine{343     \textcolor{keywordtype}{void} \mbox{\hyperlink{classevent_aa70006c2d5e1d4d30ee31a239117d8e5}{preOrder}}(\mbox{\hyperlink{structevent_queue}{eventQueue}}* root)\{}
+\DoxyCodeLine{344         \textcolor{keywordflow}{if}(root!=NULL)\{}
+\DoxyCodeLine{345             cout<<root-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}<<\textcolor{stringliteral}{"{} "{}}<<root-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}<<\textcolor{stringliteral}{"{} "{}}<<root-\/>height<<endl;}
+\DoxyCodeLine{346             \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = root-\/>U.begin(); it!=root-\/>U.end(); it++)}
+\DoxyCodeLine{347                 cout<<(*it).upper.x<<\textcolor{stringliteral}{"{} "{}}<<(*it).upper.y<<\textcolor{stringliteral}{"{} "{}}<<(*it).lower.x<<\textcolor{stringliteral}{"{} "{}}<<(*it).lower.y<<endl;}
+\DoxyCodeLine{348             \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = root-\/>L.begin(); it!=root-\/>L.end(); it++)}
+\DoxyCodeLine{349                 cout<<(*it).upper.x<<\textcolor{stringliteral}{"{} "{}}<<(*it).upper.y<<\textcolor{stringliteral}{"{} "{}}<<(*it).lower.x<<\textcolor{stringliteral}{"{} "{}}<<(*it).lower.y<<endl;}
+\DoxyCodeLine{350             \mbox{\hyperlink{classevent_aa70006c2d5e1d4d30ee31a239117d8e5}{preOrder}}(root-\/>left);}
+\DoxyCodeLine{351             \mbox{\hyperlink{classevent_aa70006c2d5e1d4d30ee31a239117d8e5}{preOrder}}(root-\/>right);}
+\DoxyCodeLine{352         \}}
+\DoxyCodeLine{353     \}}
+\DoxyCodeLine{354 \};}
+\DoxyCodeLine{355 }
+\DoxyCodeLine{356 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

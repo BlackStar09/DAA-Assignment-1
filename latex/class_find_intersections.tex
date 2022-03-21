@@ -1,0 +1,102 @@
+\hypertarget{class_find_intersections}{}\doxysection{Find\+Intersections Class Reference}
+\label{class_find_intersections}\index{FindIntersections@{FindIntersections}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_find_intersections_a4b5e9de1d5f6101441ab9d12ef76045a}{Find\+Intersections}} (vector$<$ \mbox{\hyperlink{struct_line}{Line}} $>$ \&segments)
+\begin{DoxyCompactList}\small\item\em A Constructor for class \mbox{\hyperlink{class_find_intersections}{Find\+Intersections}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_find_intersections_a0bd6e01d473cce14fd81e66f540dc6b2}\label{class_find_intersections_a0bd6e01d473cce14fd81e66f540dc6b2}} 
+int {\bfseries min} (int a, int b)
+\begin{DoxyCompactList}\small\item\em A helper function to find the minimum of two integer values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_find_intersections_a14573c98e18d0439bc61c693f8842189}\label{class_find_intersections_a14573c98e18d0439bc61c693f8842189}} 
+bool {\bfseries on\+Segment} (\mbox{\hyperlink{struct_point}{Point}} p, \mbox{\hyperlink{struct_point}{Point}} q, \mbox{\hyperlink{struct_point}{Point}} r)
+\begin{DoxyCompactList}\small\item\em A member function that checks whether a point q lies on the segment between points p and r. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_find_intersections_ab22dae2fb8ef78f4e263e2f3cc5c64c2}{orientation}} (\mbox{\hyperlink{struct_point}{Point}} p, \mbox{\hyperlink{struct_point}{Point}} q, \mbox{\hyperlink{struct_point}{Point}} r)
+\begin{DoxyCompactList}\small\item\em Checks the relative orientation of three sets of ordered points. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_find_intersections_a0cbf7b243adbacb3732f57fbc2fb6c88}{check\+Intersect}} (\mbox{\hyperlink{struct_line}{Line}} l1, \mbox{\hyperlink{struct_line}{Line}} l2)
+\begin{DoxyCompactList}\small\item\em Checks whether two lines l1 and l2 intersect. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_point}{Point}} \mbox{\hyperlink{class_find_intersections_a416ff768f08db4765d5ad3f64eb1a087}{intersection\+Of}} (\mbox{\hyperlink{struct_line}{Line}} l1, \mbox{\hyperlink{struct_line}{Line}} l2)
+\item 
+void \mbox{\hyperlink{class_find_intersections_a1859fdfb92a9e0a80ea862ecc7cfbce0}{find\+New\+Event}} (\mbox{\hyperlink{struct_line}{Line}} l1, \mbox{\hyperlink{struct_line}{Line}} l2, \mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em A function that is similar to the Fine\+New\+Event(sl, sr, p) function defined in the IEEE Article. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_find_intersections_a8a6d0b1b76c36402d8f0d192dc23f9c2}\label{class_find_intersections_a8a6d0b1b76c36402d8f0d192dc23f9c2}} 
+int {\bfseries contains} (vector$<$ \mbox{\hyperlink{struct_line}{Line}} $>$ segments, \mbox{\hyperlink{struct_line}{Line}} l)
+\begin{DoxyCompactList}\small\item\em This helper function checks whether a given line is already present within a vector contatining lines. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_find_intersections_a5915a50a7cdcfb980a02a4702824bbbc}\label{class_find_intersections_a5915a50a7cdcfb980a02a4702824bbbc}} 
+vector$<$ \mbox{\hyperlink{struct_line}{Line}} $>$ {\bfseries union\+Of} (vector$<$ \mbox{\hyperlink{struct_line}{Line}} $>$ a, vector$<$ \mbox{\hyperlink{struct_line}{Line}} $>$ b)
+\begin{DoxyCompactList}\small\item\em This helper function helps us with Union operations (which are useful in the handle\+Event\+Point function). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_find_intersections_a6600cfac425a8b92664764a0a03de454}\label{class_find_intersections_a6600cfac425a8b92664764a0a03de454}} 
+bool {\bfseries empty} (vector$<$ \mbox{\hyperlink{struct_line}{Line}} $>$ x)
+\begin{DoxyCompactList}\small\item\em A helper function to check whether a given vector is empty. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_find_intersections_a1fdc7e92756409d0278625f33a8a1639}{handle\+Event\+Point}} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$eventer)
+\begin{DoxyCompactList}\small\item\em A function that deals with event points (and enables new event points to be added). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_find_intersections_af69ee532a6b8ae26e603c70f0121540d}\label{class_find_intersections_af69ee532a6b8ae26e603c70f0121540d}} 
+void {\bfseries run\+Algorithm} ()
+\begin{DoxyCompactList}\small\item\em Function that is similar to \mbox{\hyperlink{class_find_intersections}{Find\+Intersections}} in the context of the IEEE Document. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_find_intersections_a4b5e9de1d5f6101441ab9d12ef76045a}\label{class_find_intersections_a4b5e9de1d5f6101441ab9d12ef76045a}} 
+\index{FindIntersections@{FindIntersections}!FindIntersections@{FindIntersections}}
+\index{FindIntersections@{FindIntersections}!FindIntersections@{FindIntersections}}
+\doxysubsubsection{\texorpdfstring{FindIntersections()}{FindIntersections()}}
+{\footnotesize\ttfamily Find\+Intersections\+::\+Find\+Intersections (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{struct_line}{Line}} $>$ \&}]{segments }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A Constructor for class \mbox{\hyperlink{class_find_intersections}{Find\+Intersections}}. 
+
+It makes sure that the lower and upper pairs are ordered correctly before they\textquotesingle{}re inserted into the Event Queue i.\+e lower points have a teller value of 2 while upper points have a teller value of 1. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_find_intersections_a0cbf7b243adbacb3732f57fbc2fb6c88}\label{class_find_intersections_a0cbf7b243adbacb3732f57fbc2fb6c88}} 
+\index{FindIntersections@{FindIntersections}!checkIntersect@{checkIntersect}}
+\index{checkIntersect@{checkIntersect}!FindIntersections@{FindIntersections}}
+\doxysubsubsection{\texorpdfstring{checkIntersect()}{checkIntersect()}}
+{\footnotesize\ttfamily bool Find\+Intersections\+::check\+Intersect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l1,  }\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks whether two lines l1 and l2 intersect. 
+
+Checks whether the lines l1 and l2 intersect. Returns true if they intersect. \mbox{\Hypertarget{class_find_intersections_a1859fdfb92a9e0a80ea862ecc7cfbce0}\label{class_find_intersections_a1859fdfb92a9e0a80ea862ecc7cfbce0}} 
+\index{FindIntersections@{FindIntersections}!findNewEvent@{findNewEvent}}
+\index{findNewEvent@{findNewEvent}!FindIntersections@{FindIntersections}}
+\doxysubsubsection{\texorpdfstring{findNewEvent()}{findNewEvent()}}
+{\footnotesize\ttfamily void Find\+Intersections\+::find\+New\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l1,  }\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l2,  }\item[{\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A function that is similar to the Fine\+New\+Event(sl, sr, p) function defined in the IEEE Article. 
+
+The function checks whether the lines l1 and l2 intersect below (or on) the sweep line and to the right of the current event point p (dependent on whether or not the intersection is not yet present as an event in the Event Queue. \mbox{\Hypertarget{class_find_intersections_a1fdc7e92756409d0278625f33a8a1639}\label{class_find_intersections_a1fdc7e92756409d0278625f33a8a1639}} 
+\index{FindIntersections@{FindIntersections}!handleEventPoint@{handleEventPoint}}
+\index{handleEventPoint@{handleEventPoint}!FindIntersections@{FindIntersections}}
+\doxysubsubsection{\texorpdfstring{handleEventPoint()}{handleEventPoint()}}
+{\footnotesize\ttfamily void Find\+Intersections\+::handle\+Event\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$}]{eventer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+A function that deals with event points (and enables new event points to be added). 
+
+The function is similar to the Handle\+Event\+Point(p) function defined in the IEEE Article. It serves the purpose of adding and removing lines from the status queue as per the rules defined in the IEEE Article. \mbox{\Hypertarget{class_find_intersections_a416ff768f08db4765d5ad3f64eb1a087}\label{class_find_intersections_a416ff768f08db4765d5ad3f64eb1a087}} 
+\index{FindIntersections@{FindIntersections}!intersectionOf@{intersectionOf}}
+\index{intersectionOf@{intersectionOf}!FindIntersections@{FindIntersections}}
+\doxysubsubsection{\texorpdfstring{intersectionOf()}{intersectionOf()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_point}{Point}} Find\+Intersections\+::intersection\+Of (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l1,  }\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+It finds the Intersection \mbox{\hyperlink{struct_point}{Point}} of two lines l1 and l2. The function does this using the determinant method of finding the intersection of two 2D lines. (Finds the intersection in O(1)) \mbox{\Hypertarget{class_find_intersections_ab22dae2fb8ef78f4e263e2f3cc5c64c2}\label{class_find_intersections_ab22dae2fb8ef78f4e263e2f3cc5c64c2}} 
+\index{FindIntersections@{FindIntersections}!orientation@{orientation}}
+\index{orientation@{orientation}!FindIntersections@{FindIntersections}}
+\doxysubsubsection{\texorpdfstring{orientation()}{orientation()}}
+{\footnotesize\ttfamily int Find\+Intersections\+::orientation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}}}]{p,  }\item[{\mbox{\hyperlink{struct_point}{Point}}}]{q,  }\item[{\mbox{\hyperlink{struct_point}{Point}}}]{r }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks the relative orientation of three sets of ordered points. 
+
+Checks the orientation of an ordered set of triplets (p, q, r) 0 =\texorpdfstring{$>$}{>} p, q and r are collinear 1=\texorpdfstring{$>$}{>} Clockwise orientation 2=\texorpdfstring{$>$}{>} Anti-\/\+Clockwise Orientation 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+DAA-\/\+Assignment-\/1/2018\+B4\+A70812\+H\+\_\+2018\+B4\+A70713\+H\+\_\+2018\+B4\+A70922\+H\+\_\+\+DAA Assignment 1/Find\+Intersections.\+h\end{DoxyCompactItemize}

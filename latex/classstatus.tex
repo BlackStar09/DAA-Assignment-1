@@ -1,0 +1,101 @@
+\hypertarget{classstatus}{}\doxysection{status Class Reference}
+\label{classstatus}\index{status@{status}}
+
+
+This class is used to manipulate the Status Queue tree.  
+
+
+
+
+{\ttfamily \#include $<$status\+Queue.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classstatus_a22e483f0410490743e4970e905e5fa19}\label{classstatus_a22e483f0410490743e4970e905e5fa19}} 
+{\bfseries status} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}\label{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}} 
+int {\bfseries height} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Function which returns height of the node, for balancing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a990e458d115dd5db244165c176faef74}\label{classstatus_a990e458d115dd5db244165c176faef74}} 
+\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$ {\bfseries create\+Status\+Queue\+Node} (\mbox{\hyperlink{struct_line}{Line}} segment)
+\begin{DoxyCompactList}\small\item\em Function to create an status queue node for insertion. Takes in the \mbox{\hyperlink{struct_line}{Line}} segment to be inserted. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a04fc01dcc77e617c8b16c50f7f693df7}\label{classstatus_a04fc01dcc77e617c8b16c50f7f693df7}} 
+\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$ {\bfseries right\+Rotate} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$y)
+\begin{DoxyCompactList}\small\item\em Rotate the node toward the right, used in some cases while tree balancing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a6b2bf08b6c334dfda7f2e6622df77d0d}\label{classstatus_a6b2bf08b6c334dfda7f2e6622df77d0d}} 
+\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$ {\bfseries left\+Rotate} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$y)
+\begin{DoxyCompactList}\small\item\em Rotate the node toward the left, used in some cases while tree balancing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_aae9bfc22fea1567f295f69430db8d668}\label{classstatus_aae9bfc22fea1567f295f69430db8d668}} 
+int {\bfseries get\+Balance} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$N)
+\begin{DoxyCompactList}\small\item\em Used in tree balancing, specifically gets the difference in heights between the left and right children. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a25177eb4505c5bdba4f1584df8117bb3}\label{classstatus_a25177eb4505c5bdba4f1584df8117bb3}} 
+int {\bfseries height\+Diff} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Used in tree balancing, specifically gets the difference in heights between the left and right children. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classstatus_ae41fbcab7a2f3b1387054dfca60de291}{compare}} (\mbox{\hyperlink{struct_line}{Line}} l1, \mbox{\hyperlink{struct_line}{Line}} l2, double y)
+\begin{DoxyCompactList}\small\item\em Special Comparator for the Status queue tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}\label{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}} 
+double {\bfseries sloper} (\mbox{\hyperlink{struct_line}{Line}} l1, double y)
+\begin{DoxyCompactList}\small\item\em Returns the X coordinate, for comparison ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a40757553046f599d6aff19731823cee2}\label{classstatus_a40757553046f599d6aff19731823cee2}} 
+int {\bfseries max} (int a, int b)
+\begin{DoxyCompactList}\small\item\em Returns the max between two integers. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$ \mbox{\hyperlink{classstatus_ac502e40166879f2c837a1d0aaed12656}{inserti}} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$root, \mbox{\hyperlink{struct_line}{Line}} l1, double y\+\_\+coor)
+\begin{DoxyCompactList}\small\item\em Function to insert a point into the status. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a6c27ec2432ac72a03747015b2f11d668}\label{classstatus_a6c27ec2432ac72a03747015b2f11d668}} 
+\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$ {\bfseries min\+Value\+Segment} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$segment)
+\begin{DoxyCompactList}\small\item\em Function that returns the next status queue node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a01d56d10b211b10d80b174d17fed3f73}\label{classstatus_a01d56d10b211b10d80b174d17fed3f73}} 
+\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$ {\bfseries delete\+Segment} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$root, \mbox{\hyperlink{struct_line}{Line}} l1, double y\+\_\+coor)
+\begin{DoxyCompactList}\small\item\em Function to delete the status queue node from the tree. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_a9bb28d6bc8a366081f30c76ca09445b3}\label{classstatus_a9bb28d6bc8a366081f30c76ca09445b3}} 
+void {\bfseries pre\+Order} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Preorder Traversal of the tree, used for debugging mainly. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_abc50ce9d6972a1abf53ca5ea018afa06}\label{classstatus_abc50ce9d6972a1abf53ca5ea018afa06}} 
+void {\bfseries get\+Left\+Neighbor} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$node, \mbox{\hyperlink{struct_line}{Line}} l1, double y\+\_\+coor, \mbox{\hyperlink{struct_line}{Line}} $\ast$last\+Right)
+\begin{DoxyCompactList}\small\item\em Function that returns the left neighbor of a node, very crucial in the algorithm to determine the node in the status queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_ac3fdc48519afdbe5427e4bdb4d08ea0a}\label{classstatus_ac3fdc48519afdbe5427e4bdb4d08ea0a}} 
+void {\bfseries get\+Right\+Neighbor} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$node, \mbox{\hyperlink{struct_line}{Line}} l1, double y\+\_\+coor, \mbox{\hyperlink{struct_line}{Line}} $\ast$last\+Left)
+\begin{DoxyCompactList}\small\item\em Function that returns the right neighbor of a node, very crucial in the algorithm to determine the node in the status queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classstatus_ab4e5485d16dd7efb7d2127a62ab6450b}\label{classstatus_ab4e5485d16dd7efb7d2127a62ab6450b}} 
+void {\bfseries get\+Neighbors} (\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$node, double x\+\_\+coor, double y\+\_\+coor, \mbox{\hyperlink{struct_line}{Line}} $\ast$last\+Right, \mbox{\hyperlink{struct_line}{Line}} $\ast$last\+Left)
+\begin{DoxyCompactList}\small\item\em Function that returns both the neighbors of a node, given the point (taken in x\+\_\+coor and y\+\_\+coor) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classstatus_a4858aabcdb066b3d69b31c5cd7f89e02}\label{classstatus_a4858aabcdb066b3d69b31c5cd7f89e02}} 
+int {\bfseries two\+\_\+insert}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to manipulate the Status Queue tree. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classstatus_ae41fbcab7a2f3b1387054dfca60de291}\label{classstatus_ae41fbcab7a2f3b1387054dfca60de291}} 
+\index{status@{status}!compare@{compare}}
+\index{compare@{compare}!status@{status}}
+\doxysubsubsection{\texorpdfstring{compare()}{compare()}}
+{\footnotesize\ttfamily int status\+::compare (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l1,  }\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l2,  }\item[{double}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Special Comparator for the Status queue tree. 
+
+The Status queue does not order the nodes the way a normal tree does It comapres the slope of the two lines to decide which side of the tree the node must enter. \mbox{\Hypertarget{classstatus_ac502e40166879f2c837a1d0aaed12656}\label{classstatus_ac502e40166879f2c837a1d0aaed12656}} 
+\index{status@{status}!inserti@{inserti}}
+\index{inserti@{inserti}!status@{status}}
+\doxysubsubsection{\texorpdfstring{inserti()}{inserti()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$ status\+::inserti (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structstatus_queue}{status\+Queue}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l1,  }\item[{double}]{y\+\_\+coor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to insert a point into the status. 
+
+Takes the line segment, y coordinate in order to calculate the slope of the line for the comparator After the \mbox{\hyperlink{struct_line}{Line}} is inserted, rotations are performed to maintain the balanced property of the Status queue 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+DAA-\/\+Assignment-\/1/2018\+B4\+A70812\+H\+\_\+2018\+B4\+A70713\+H\+\_\+2018\+B4\+A70922\+H\+\_\+\+DAA Assignment 1/status\+Queue.\+h\end{DoxyCompactItemize}

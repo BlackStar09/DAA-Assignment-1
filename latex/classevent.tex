@@ -1,0 +1,82 @@
+\hypertarget{classevent}{}\doxysection{event Class Reference}
+\label{classevent}\index{event@{event}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classevent_a65b3a714b1f18fb78ba526267e74ae3d}\label{classevent_a65b3a714b1f18fb78ba526267e74ae3d}} 
+int {\bfseries max} (int a, int b)
+\begin{DoxyCompactList}\small\item\em A helper function to find the maximum of two integer values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_ad91717c461f2394193b06170394a753b}\label{classevent_ad91717c461f2394193b06170394a753b}} 
+int {\bfseries height} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em A helper function that return the height of a node in the event queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ \mbox{\hyperlink{classevent_a4a1e444b3bb36212d858eb3c5cfec2bb}{createevent\+Queue\+Node}} (\mbox{\hyperlink{struct_point}{Point}} event\+Point, int teller, \mbox{\hyperlink{struct_line}{Line}} l1)
+\begin{DoxyCompactList}\small\item\em Function to create an event queue node for insertion. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_a65535e9ae92274c9f4a1c593b8af6059}\label{classevent_a65535e9ae92274c9f4a1c593b8af6059}} 
+\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ {\bfseries right\+Rotate} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$y)
+\begin{DoxyCompactList}\small\item\em Function that performs the right rotation to keep the tree balanced. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_ad127d1934dc45f69522c94e0d283d920}\label{classevent_ad127d1934dc45f69522c94e0d283d920}} 
+\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ {\bfseries left\+Rotate} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$y)
+\begin{DoxyCompactList}\small\item\em Function that performs the left rotation to keep the tree balanced. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_acb0b1e7cca05e152a4abfed86ec83232}\label{classevent_acb0b1e7cca05e152a4abfed86ec83232}} 
+int {\bfseries height\+Diff} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em A helper function that calculates the difference between the heights of a node\textquotesingle{}s children. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ \mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$root, \mbox{\hyperlink{struct_point}{Point}} event\+Point, \mbox{\hyperlink{struct_line}{Line}} l1, int teller)
+\begin{DoxyCompactList}\small\item\em Function to insert a point into the event queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_ab1c07752d21931a9bbc63e0c480d8020}\label{classevent_ab1c07752d21931a9bbc63e0c480d8020}} 
+\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ {\bfseries min\+Value\+Event} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$\mbox{\hyperlink{classevent}{event}})
+\begin{DoxyCompactList}\small\item\em Function that returns the next event point from the event queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_ab370c621140b46ca2abf7fcbcd625b75}\label{classevent_ab370c621140b46ca2abf7fcbcd625b75}} 
+int {\bfseries get\+Balance} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$N)
+\begin{DoxyCompactList}\small\item\em A helper function that calculates the difference between the heights of a node\textquotesingle{}s children. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_ab546deb435e62b2be106157639d8a9bd}\label{classevent_ab546deb435e62b2be106157639d8a9bd}} 
+\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ {\bfseries delete\+Event} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Function that deletes the the next event point from the event queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ \mbox{\hyperlink{classevent_aae783e657c37c9850a9f5cff3e525b10}{delete\+Node}} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$root, double x, double y)
+\begin{DoxyCompactList}\small\item\em Function that deletes a node from the event queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_acb8202e97d6216e2190a6d25322ac5f7}\label{classevent_acb8202e97d6216e2190a6d25322ac5f7}} 
+\mbox{\hyperlink{structevent_queue}{event\+Queue}} {\bfseries get\+Next\+Event} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Function that returns the next event point from the event queue. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_a5816a478cc295b8f58edfe2fc5337481}\label{classevent_a5816a478cc295b8f58edfe2fc5337481}} 
+\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ {\bfseries max\+Value\+Event} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$node)
+\begin{DoxyCompactList}\small\item\em Function that returns the max value node in the right subtree of the given node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classevent_aa70006c2d5e1d4d30ee31a239117d8e5}\label{classevent_aa70006c2d5e1d4d30ee31a239117d8e5}} 
+void {\bfseries pre\+Order} (\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Helper function that allows us to traverse to the event queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classevent_a4a1e444b3bb36212d858eb3c5cfec2bb}\label{classevent_a4a1e444b3bb36212d858eb3c5cfec2bb}} 
+\index{event@{event}!createeventQueueNode@{createeventQueueNode}}
+\index{createeventQueueNode@{createeventQueueNode}!event@{event}}
+\doxysubsubsection{\texorpdfstring{createeventQueueNode()}{createeventQueueNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ event\+::createevent\+Queue\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_point}{Point}}}]{event\+Point,  }\item[{int}]{teller,  }\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to create an event queue node for insertion. 
+
+The variable teller gives us the type of point 1 =\texorpdfstring{$>$}{>} the point is an upper endpoint of l1 2 =\texorpdfstring{$>$}{>} the point is a lower endpoint of l1 \mbox{\Hypertarget{classevent_aae783e657c37c9850a9f5cff3e525b10}\label{classevent_aae783e657c37c9850a9f5cff3e525b10}} 
+\index{event@{event}!deleteNode@{deleteNode}}
+\index{deleteNode@{deleteNode}!event@{event}}
+\doxysubsubsection{\texorpdfstring{deleteNode()}{deleteNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ event\+::delete\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$}]{root,  }\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function that deletes a node from the event queue. 
+
+Given the x and y coordinates of a point, it recursively searches for the point and then deletes it \mbox{\Hypertarget{classevent_ae91c1c09ebf4ff5488997f792f581484}\label{classevent_ae91c1c09ebf4ff5488997f792f581484}} 
+\index{event@{event}!inserti@{inserti}}
+\index{inserti@{inserti}!event@{event}}
+\doxysubsubsection{\texorpdfstring{inserti()}{inserti()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$ event\+::inserti (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structevent_queue}{event\+Queue}} $\ast$}]{root,  }\item[{\mbox{\hyperlink{struct_point}{Point}}}]{event\+Point,  }\item[{\mbox{\hyperlink{struct_line}{Line}}}]{l1,  }\item[{int}]{teller }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function to insert a point into the event queue. 
+
+Takes the point, line segment of which it is a part, its type and inserts it into the event queue accordingly After the point is inserted, rotations are performed to maintain the balanced property of the event queue 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+DAA-\/\+Assignment-\/1/2018\+B4\+A70812\+H\+\_\+2018\+B4\+A70713\+H\+\_\+2018\+B4\+A70922\+H\+\_\+\+DAA Assignment 1/event\+Queue.\+h\end{DoxyCompactItemize}

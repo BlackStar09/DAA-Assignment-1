@@ -1,0 +1,365 @@
+\hypertarget{status_queue_8h_source}{}\doxysection{status\+Queue.\+h}
+\label{status_queue_8h_source}\index{DAA-\/Assignment-\/1/2018B4A70812H\_2018B4A70713H\_2018B4A70922H\_DAA Assignment 1/statusQueue.h@{DAA-\/Assignment-\/1/2018B4A70812H\_2018B4A70713H\_2018B4A70922H\_DAA Assignment 1/statusQueue.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef STATUSQUEUE\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define STATUSQUEUE\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <bits/stdc++.h>}}
+\DoxyCodeLine{6 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{9 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_point}{Point}}\{}
+\DoxyCodeLine{11     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{13     \textcolor{keywordtype}{double} \mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}};}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} type;}
+\DoxyCodeLine{15 \};}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{18 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_line}{Line}}\{}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_line_afdaa84394c59e1a786678461a85ab5f6}{index}};}
+\DoxyCodeLine{22     \mbox{\hyperlink{struct_point}{Point}} \mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}};}
+\DoxyCodeLine{24     \mbox{\hyperlink{struct_point}{Point}} \mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}};}
+\DoxyCodeLine{25 \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{28 \textcolor{keyword}{struct }\mbox{\hyperlink{structstatus_queue}{statusQueue}}\{}
+\DoxyCodeLine{30     \mbox{\hyperlink{struct_line}{Line}} \mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{32     \mbox{\hyperlink{structstatus_queue}{statusQueue}}* \mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}};}
+\DoxyCodeLine{34     \mbox{\hyperlink{structstatus_queue}{statusQueue}}* \mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}};}
+\DoxyCodeLine{36     \textcolor{keywordtype}{int} \mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}};}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{40 \textcolor{keyword}{class }\mbox{\hyperlink{classstatus}{status}}\{}
+\DoxyCodeLine{41     }
+\DoxyCodeLine{42     \textcolor{keyword}{public}:}
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} two\_insert;}
+\DoxyCodeLine{45     \mbox{\hyperlink{classstatus_a22e483f0410490743e4970e905e5fa19}{status}}()\{}
+\DoxyCodeLine{46         two\_insert = 1;}
+\DoxyCodeLine{47     \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{int} \mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}}* node)\{}
+\DoxyCodeLine{51         \textcolor{keywordflow}{if}(node == NULL)}
+\DoxyCodeLine{52             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{53         \textcolor{keywordflow}{return} node-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}};}
+\DoxyCodeLine{54     \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{57     \mbox{\hyperlink{structstatus_queue}{statusQueue}} *\mbox{\hyperlink{classstatus_a990e458d115dd5db244165c176faef74}{createStatusQueueNode}}(\mbox{\hyperlink{struct_line}{Line}} segment) \{}
+\DoxyCodeLine{58         \mbox{\hyperlink{structstatus_queue}{statusQueue}} *newnode = \textcolor{keyword}{new} \mbox{\hyperlink{structstatus_queue}{statusQueue}}();}
+\DoxyCodeLine{59         newnode-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}} = segment;}
+\DoxyCodeLine{60         newnode-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} = NULL;}
+\DoxyCodeLine{61         newnode-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} = NULL;}
+\DoxyCodeLine{62         newnode-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}} = 1;}
+\DoxyCodeLine{63         \textcolor{keywordflow}{return} newnode;}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{67     \mbox{\hyperlink{structstatus_queue}{statusQueue}} *\mbox{\hyperlink{classstatus_a04fc01dcc77e617c8b16c50f7f693df7}{rightRotate}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}} *y)\{}
+\DoxyCodeLine{68         \mbox{\hyperlink{structstatus_queue}{statusQueue}} *x = y-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}};}
+\DoxyCodeLine{69         \mbox{\hyperlink{structstatus_queue}{statusQueue}} *z = x-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}};}
+\DoxyCodeLine{70         x-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} = y;}
+\DoxyCodeLine{71         y-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} = z;}
+\DoxyCodeLine{72         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(y-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}})>(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(y-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}})+1))}
+\DoxyCodeLine{73             y-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}}=\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(y-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}});}
+\DoxyCodeLine{74         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{75             y-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}}=\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(y-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}})+1;}
+\DoxyCodeLine{76         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(x-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}})>(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(x-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}})+1))}
+\DoxyCodeLine{77             x-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}}=\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(x-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}});}
+\DoxyCodeLine{78         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{79             x-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}}=\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(x-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}})+1;}
+\DoxyCodeLine{80         \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{81     \}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{84     \mbox{\hyperlink{structstatus_queue}{statusQueue}} *\mbox{\hyperlink{classstatus_a6b2bf08b6c334dfda7f2e6622df77d0d}{leftRotate}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}} *y)\{}
+\DoxyCodeLine{85         \mbox{\hyperlink{structstatus_queue}{statusQueue}} *x = y-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}};}
+\DoxyCodeLine{86         \mbox{\hyperlink{structstatus_queue}{statusQueue}} *z = x-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}};}
+\DoxyCodeLine{87         x-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} = y;}
+\DoxyCodeLine{88         y-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} = z;}
+\DoxyCodeLine{89         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(y-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}})>(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(y-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}})+1))}
+\DoxyCodeLine{90             y-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}}=\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(y-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}});}
+\DoxyCodeLine{91         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{92             y-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}}=\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(y-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}})+1;}
+\DoxyCodeLine{93         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(x-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}})>(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(x-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}})+1))}
+\DoxyCodeLine{94             x-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}}=\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(x-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}});}
+\DoxyCodeLine{95         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{96             x-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}}=\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(x-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}})+1;}
+\DoxyCodeLine{97         \textcolor{keywordflow}{return} x;}
+\DoxyCodeLine{98     \}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{101     \textcolor{keywordtype}{int} \mbox{\hyperlink{classstatus_aae9bfc22fea1567f295f69430db8d668}{getBalance}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}} *N)}
+\DoxyCodeLine{102     \{}
+\DoxyCodeLine{103         \textcolor{keywordflow}{if} (N == NULL)}
+\DoxyCodeLine{104             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{105         \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(N-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}) -\/ \mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(N-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}});}
+\DoxyCodeLine{106     \}}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{109     \textcolor{keywordtype}{int} \mbox{\hyperlink{classstatus_a25177eb4505c5bdba4f1584df8117bb3}{heightDiff}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}}* node)\{}
+\DoxyCodeLine{110         \textcolor{keywordflow}{if}(node == NULL)}
+\DoxyCodeLine{111             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{112         \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(node-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}) -\/ \mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(node-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}});}
+\DoxyCodeLine{113     \}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{116 }
+\DoxyCodeLine{119     \textcolor{keywordtype}{int} \mbox{\hyperlink{classstatus_ae41fbcab7a2f3b1387054dfca60de291}{compare}}(\mbox{\hyperlink{struct_line}{Line}} l1, \mbox{\hyperlink{struct_line}{Line}} l2, \textcolor{keywordtype}{double} y)\{}
+\DoxyCodeLine{120         \textcolor{keywordtype}{int} x1 = (y-\/l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})*((l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}-\/l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})/(l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}))+l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{121         \textcolor{keywordtype}{int} x2 = (y-\/l2.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})*((l2.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}-\/l2.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})/(l2.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ l2.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}))+l2.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{122         \textcolor{keywordflow}{if}(x1<x2)}
+\DoxyCodeLine{123             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{124         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(x1>x2)}
+\DoxyCodeLine{125             \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{126         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{127             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{128     \}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{131     \textcolor{keywordtype}{double} \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(\mbox{\hyperlink{struct_line}{Line}} l1, \textcolor{keywordtype}{double} y)\{}
+\DoxyCodeLine{132         \textcolor{keywordflow}{if}(l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} != 0)}
+\DoxyCodeLine{133             \textcolor{keywordflow}{return} ((y -\/ l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})*(l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} -\/ l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})/(l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})) + l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{134         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{135             \textcolor{keywordflow}{return} ((y -\/ l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})*(l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} -\/ l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})/(l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} + 1e-\/15)) + l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{136     \}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{139     \textcolor{keywordtype}{int} \mbox{\hyperlink{classstatus_a40757553046f599d6aff19731823cee2}{max}}(\textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b)\{}
+\DoxyCodeLine{140         \textcolor{keywordtype}{int} maxer = a>b?a:b;}
+\DoxyCodeLine{141         \textcolor{keywordflow}{return} maxer;}
+\DoxyCodeLine{142     \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{145 }
+\DoxyCodeLine{147     \mbox{\hyperlink{structstatus_queue}{statusQueue}}* \mbox{\hyperlink{classstatus_ac502e40166879f2c837a1d0aaed12656}{inserti}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}}* root, \mbox{\hyperlink{struct_line}{Line}} l1, \textcolor{keywordtype}{double} y\_coor)}
+\DoxyCodeLine{148     \{}
+\DoxyCodeLine{149         \textcolor{comment}{/*if (root == NULL)}}
+\DoxyCodeLine{150 \textcolor{comment}{            return createStatusQueueNode(l1);}}
+\DoxyCodeLine{151 \textcolor{comment}{}}
+\DoxyCodeLine{152 \textcolor{comment}{        //how to insert here?}}
+\DoxyCodeLine{153 \textcolor{comment}{        if(compare(l1, root-\/>segment, y\_coor))}}
+\DoxyCodeLine{154 \textcolor{comment}{            root-\/>right=inserti(root-\/>right,l1);}}
+\DoxyCodeLine{155 \textcolor{comment}{        else}}
+\DoxyCodeLine{156 \textcolor{comment}{            root-\/>left=inserti(root-\/>left,l1);}}
+\DoxyCodeLine{157 \textcolor{comment}{        root-\/>height =(height(root-\/>left) > height(root-\/>right))? height(root-\/>left) + 1 : height(root-\/>right) + 1 ;}}
+\DoxyCodeLine{158 \textcolor{comment}{}}
+\DoxyCodeLine{159 \textcolor{comment}{        int diff = heightDiff(root);}}
+\DoxyCodeLine{160 \textcolor{comment}{        if (diff > 1 \&\& compare(root-\/>segment,l1))}}
+\DoxyCodeLine{161 \textcolor{comment}{            return rightRotate(root);}}
+\DoxyCodeLine{162 \textcolor{comment}{        if (diff < -\/1 \&\& compare(l1,root-\/>segment))}}
+\DoxyCodeLine{163 \textcolor{comment}{            return leftRotate(root);}}
+\DoxyCodeLine{164 \textcolor{comment}{        if (diff > 1 \&\& compare(l1,root-\/>segment))\{}}
+\DoxyCodeLine{165 \textcolor{comment}{            root-\/>left = leftRotate(root-\/>left);}}
+\DoxyCodeLine{166 \textcolor{comment}{            return rightRotate(root);}}
+\DoxyCodeLine{167 \textcolor{comment}{        \}}}
+\DoxyCodeLine{168 \textcolor{comment}{        if (diff < -\/1 \&\& compare(root-\/>segment,l1)) \{}}
+\DoxyCodeLine{169 \textcolor{comment}{            root-\/>right = rightRotate(root-\/>right);}}
+\DoxyCodeLine{170 \textcolor{comment}{            return leftRotate(root);}}
+\DoxyCodeLine{171 \textcolor{comment}{        \}}}
+\DoxyCodeLine{172 \textcolor{comment}{        return root;*/}}
+\DoxyCodeLine{173         \textcolor{comment}{//cout<<"{}Entered"{}<<endl;}}
+\DoxyCodeLine{174         \textcolor{keywordtype}{int} *jdouble = \&two\_insert;}
+\DoxyCodeLine{175         \textcolor{keywordflow}{if}(root == NULL)\{}
+\DoxyCodeLine{176             *jdouble = 1;}
+\DoxyCodeLine{177             \textcolor{comment}{//cout<<"{}Node Created"{}<<endl;}}
+\DoxyCodeLine{178             \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a990e458d115dd5db244165c176faef74}{createStatusQueueNode}}(l1);}
+\DoxyCodeLine{179         \}}
+\DoxyCodeLine{180         \textcolor{comment}{//double suml1 = ((y\_coor -\/ l1.lower.y)*((l1.lower.x -\/ l1.upper.x)/(l1.lower.y -\/ l1.upper.y))) + l1.lower.x;}}
+\DoxyCodeLine{181         \textcolor{comment}{//double sumr\_segment = ((y\_coor -\/ root-\/>segment.lower.y)*((root-\/>segment.lower.x -\/ root-\/>segment.upper.x)/(root-\/>segment.lower.y -\/ root-\/>segment.upper.y))) + root-\/>segment.lower.x;}}
+\DoxyCodeLine{182         \textcolor{comment}{//cout<<sloper(l1, y\_coor)<<"{} "{}<<sloper(root-\/>segment, y\_coor)<<endl;}}
+\DoxyCodeLine{183         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor) < \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor))\{}
+\DoxyCodeLine{184             \textcolor{comment}{//cout<<"{}Moving Left"{}<<endl;}}
+\DoxyCodeLine{185             root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} = \mbox{\hyperlink{classstatus_ac502e40166879f2c837a1d0aaed12656}{inserti}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}, l1, y\_coor);}
+\DoxyCodeLine{186             \textcolor{keywordflow}{if}(*jdouble == 1)\{}
+\DoxyCodeLine{187                 root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} = \mbox{\hyperlink{classstatus_a990e458d115dd5db244165c176faef74}{createStatusQueueNode}}(root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}});}
+\DoxyCodeLine{188                 root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}} = l1;}
+\DoxyCodeLine{189                 *jdouble = 0;}
+\DoxyCodeLine{190             \}}
+\DoxyCodeLine{191         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor) > \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor))\{}
+\DoxyCodeLine{192             \textcolor{comment}{//cout<<"{}Moving Right"{}<<endl;}}
+\DoxyCodeLine{193             root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} = \mbox{\hyperlink{classstatus_ac502e40166879f2c837a1d0aaed12656}{inserti}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}, l1, y\_coor);}
+\DoxyCodeLine{194             \textcolor{keywordflow}{if}(*jdouble == 1)\{}
+\DoxyCodeLine{195                 root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} = \mbox{\hyperlink{classstatus_a990e458d115dd5db244165c176faef74}{createStatusQueueNode}}(root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}});}
+\DoxyCodeLine{196                 *jdouble = 0;}
+\DoxyCodeLine{197             \}}
+\DoxyCodeLine{198         \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{199             \textcolor{comment}{//cout<<"{}Returned"{}<<endl;}}
+\DoxyCodeLine{200             \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{201         \}}
+\DoxyCodeLine{202         root-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}} = 1 + \mbox{\hyperlink{classstatus_a40757553046f599d6aff19731823cee2}{max}}(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}), \mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}));}
+\DoxyCodeLine{203         \textcolor{keywordtype}{int} balance = \mbox{\hyperlink{classstatus_aae9bfc22fea1567f295f69430db8d668}{getBalance}}(root);}
+\DoxyCodeLine{204         \textcolor{comment}{//cout<<"{}Started Balancing"{}<<endl;}}
+\DoxyCodeLine{205         \textcolor{keywordflow}{if}(balance > 1 \&\& \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor) < \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor))}
+\DoxyCodeLine{206             \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a04fc01dcc77e617c8b16c50f7f693df7}{rightRotate}}(root);}
+\DoxyCodeLine{207         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(balance < -\/1 \&\& \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor) > \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor))}
+\DoxyCodeLine{208             \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a6b2bf08b6c334dfda7f2e6622df77d0d}{leftRotate}}(root);}
+\DoxyCodeLine{209         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(balance > 1 \&\& \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor) > \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor))\{}
+\DoxyCodeLine{210             root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} = \mbox{\hyperlink{classstatus_a6b2bf08b6c334dfda7f2e6622df77d0d}{leftRotate}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}});}
+\DoxyCodeLine{211             \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a04fc01dcc77e617c8b16c50f7f693df7}{rightRotate}}(root);}
+\DoxyCodeLine{212         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(balance < -\/1 \&\& \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor) < \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor))\{}
+\DoxyCodeLine{213             root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} = \mbox{\hyperlink{classstatus_a04fc01dcc77e617c8b16c50f7f693df7}{rightRotate}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}});}
+\DoxyCodeLine{214             \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a6b2bf08b6c334dfda7f2e6622df77d0d}{leftRotate}}(root);}
+\DoxyCodeLine{215         \}}
+\DoxyCodeLine{216         \textcolor{comment}{//cout<<"{}Done Balancing"{}<<endl;}}
+\DoxyCodeLine{217         \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{218     \}}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{221     \mbox{\hyperlink{structstatus_queue}{statusQueue}} * \mbox{\hyperlink{classstatus_a6c27ec2432ac72a03747015b2f11d668}{minValueSegment}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}}* segment)}
+\DoxyCodeLine{222     \{}
+\DoxyCodeLine{223         \mbox{\hyperlink{structstatus_queue}{statusQueue}}* current = segment;}
+\DoxyCodeLine{224         \textcolor{keywordflow}{while} (current-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} != NULL)}
+\DoxyCodeLine{225             current = current-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}};}
+\DoxyCodeLine{226         \textcolor{keywordflow}{return} current;}
+\DoxyCodeLine{227     \}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229     }
+\DoxyCodeLine{231     \mbox{\hyperlink{structstatus_queue}{statusQueue}}* \mbox{\hyperlink{classstatus_a01d56d10b211b10d80b174d17fed3f73}{deleteSegment}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}}* root, \mbox{\hyperlink{struct_line}{Line}} l1, \textcolor{keywordtype}{double} y\_coor)\{}
+\DoxyCodeLine{232         \textcolor{comment}{/*if (root == NULL)}}
+\DoxyCodeLine{233 \textcolor{comment}{            return root;}}
+\DoxyCodeLine{234 \textcolor{comment}{        if(root-\/>right!=NULL)}}
+\DoxyCodeLine{235 \textcolor{comment}{            root-\/>right = deleteSegment(root-\/>right);}}
+\DoxyCodeLine{236 \textcolor{comment}{        else\{}}
+\DoxyCodeLine{237 \textcolor{comment}{            if( (root-\/>left == NULL)||(root-\/>right == NULL))\{}}
+\DoxyCodeLine{238 \textcolor{comment}{                statusQueue *temp = root-\/>left ? root-\/>left : root-\/>right;}}
+\DoxyCodeLine{239 \textcolor{comment}{                if (temp == NULL)\{}}
+\DoxyCodeLine{240 \textcolor{comment}{                    temp = root;}}
+\DoxyCodeLine{241 \textcolor{comment}{                    root = NULL;}}
+\DoxyCodeLine{242 \textcolor{comment}{                \}}}
+\DoxyCodeLine{243 \textcolor{comment}{                else}}
+\DoxyCodeLine{244 \textcolor{comment}{                *root = *temp;}}
+\DoxyCodeLine{245 \textcolor{comment}{                free(temp);}}
+\DoxyCodeLine{246 \textcolor{comment}{            \}else\{}}
+\DoxyCodeLine{247 \textcolor{comment}{                statusQueue* temp = minValueSegment(root-\/>right);}}
+\DoxyCodeLine{248 \textcolor{comment}{                root-\/>segment = temp-\/>segment;}}
+\DoxyCodeLine{249 \textcolor{comment}{                root-\/>right = deleteSegment(root-\/>right);}}
+\DoxyCodeLine{250 \textcolor{comment}{            \}}}
+\DoxyCodeLine{251 \textcolor{comment}{        \}}}
+\DoxyCodeLine{252 \textcolor{comment}{        if (root == NULL)}}
+\DoxyCodeLine{253 \textcolor{comment}{            return root;}}
+\DoxyCodeLine{254 \textcolor{comment}{        root-\/>height = 1 + max(height(root-\/>left),height(root-\/>right));}}
+\DoxyCodeLine{255 \textcolor{comment}{        int balance = getBalance(root);}}
+\DoxyCodeLine{256 \textcolor{comment}{        if (balance > 1 \&\& getBalance(root-\/>left) >= 0)}}
+\DoxyCodeLine{257 \textcolor{comment}{            return rightRotate(root);}}
+\DoxyCodeLine{258 \textcolor{comment}{        if (balance > 1 \&\& getBalance(root-\/>left) < 0)\{}}
+\DoxyCodeLine{259 \textcolor{comment}{            root-\/>left = leftRotate(root-\/>left);}}
+\DoxyCodeLine{260 \textcolor{comment}{            return rightRotate(root);}}
+\DoxyCodeLine{261 \textcolor{comment}{        \}}}
+\DoxyCodeLine{262 \textcolor{comment}{        if (balance < -\/1 \&\& getBalance(root-\/>right) <= 0)}}
+\DoxyCodeLine{263 \textcolor{comment}{            return leftRotate(root);}}
+\DoxyCodeLine{264 \textcolor{comment}{        if (balance < -\/1 \&\& getBalance(root-\/>right) > 0)\{}}
+\DoxyCodeLine{265 \textcolor{comment}{            root-\/>right = rightRotate(root-\/>right);}}
+\DoxyCodeLine{266 \textcolor{comment}{            return leftRotate(root);}}
+\DoxyCodeLine{267 \textcolor{comment}{        \}}}
+\DoxyCodeLine{268 \textcolor{comment}{}}
+\DoxyCodeLine{269 \textcolor{comment}{        return root;*/}}
+\DoxyCodeLine{270         \textcolor{keywordflow}{if}(root==NULL)}
+\DoxyCodeLine{271             \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{272         \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor) < \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor))\{}
+\DoxyCodeLine{273             \textcolor{comment}{//cout<<"{}Moving Left"{}<<endl;}}
+\DoxyCodeLine{274             root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} = \mbox{\hyperlink{classstatus_a01d56d10b211b10d80b174d17fed3f73}{deleteSegment}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}, l1, y\_coor);}
+\DoxyCodeLine{275         \}}
+\DoxyCodeLine{276         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor) > \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor))\{}
+\DoxyCodeLine{277             \textcolor{comment}{//cout<<"{}Moving Right"{}<<endl;}}
+\DoxyCodeLine{278             root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} = \mbox{\hyperlink{classstatus_a01d56d10b211b10d80b174d17fed3f73}{deleteSegment}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}, l1, y\_coor);}
+\DoxyCodeLine{279         \}}
+\DoxyCodeLine{280         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{281             \textcolor{comment}{//cout<<"{}Found element to be deleted "{}<<root-\/>segment.lower.x<<"{} "{}<<root-\/>segment.lower.y<<"{} "{}<<sloper(l1, y\_coor)<<"{} "{}<<sloper(root-\/>segment, y\_coor)<<endl;}}
+\DoxyCodeLine{282             \textcolor{keywordflow}{if}((root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} == NULL) || (root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} == NULL))\{}
+\DoxyCodeLine{283                 \mbox{\hyperlink{structstatus_queue}{statusQueue}}* temp = root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} ? root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} : root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}};}
+\DoxyCodeLine{284                 \textcolor{keywordflow}{if}(temp == NULL)\{}
+\DoxyCodeLine{285                     temp = root;}
+\DoxyCodeLine{286                     root = NULL;}
+\DoxyCodeLine{287                 \}\textcolor{keywordflow}{else}}
+\DoxyCodeLine{288                     *root = *temp;}
+\DoxyCodeLine{289                 free(temp);}
+\DoxyCodeLine{290             \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{291                 \mbox{\hyperlink{structstatus_queue}{statusQueue}}* temp = \mbox{\hyperlink{classstatus_a6c27ec2432ac72a03747015b2f11d668}{minValueSegment}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}});}
+\DoxyCodeLine{292                 root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}} = temp-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{293                 \textcolor{comment}{//cout<<"{}Deleted Right"{}<<endl;}}
+\DoxyCodeLine{294                 root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} = \mbox{\hyperlink{classstatus_a01d56d10b211b10d80b174d17fed3f73}{deleteSegment}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}, temp-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor);}
+\DoxyCodeLine{295             \}}
+\DoxyCodeLine{296         \}}
+\DoxyCodeLine{297         \textcolor{keywordflow}{if}(root == NULL)}
+\DoxyCodeLine{298             \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{299 }
+\DoxyCodeLine{300         root-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}} = 1 + \mbox{\hyperlink{classstatus_a40757553046f599d6aff19731823cee2}{max}}(\mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}), \mbox{\hyperlink{classstatus_a228cec39b0352e26ff1f5aae2328e1f2}{height}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}));}
+\DoxyCodeLine{301         \textcolor{keywordtype}{int} balance = \mbox{\hyperlink{classstatus_aae9bfc22fea1567f295f69430db8d668}{getBalance}}(root);}
+\DoxyCodeLine{302         \textcolor{keywordflow}{if} (balance > 1 \&\& \mbox{\hyperlink{classstatus_aae9bfc22fea1567f295f69430db8d668}{getBalance}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}) >= 0)}
+\DoxyCodeLine{303             \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a04fc01dcc77e617c8b16c50f7f693df7}{rightRotate}}(root);}
+\DoxyCodeLine{304         \textcolor{keywordflow}{if} (balance > 1 \&\& \mbox{\hyperlink{classstatus_aae9bfc22fea1567f295f69430db8d668}{getBalance}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}) < 0)\{}
+\DoxyCodeLine{305             root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}} = \mbox{\hyperlink{classstatus_a6b2bf08b6c334dfda7f2e6622df77d0d}{leftRotate}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}});}
+\DoxyCodeLine{306             \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a04fc01dcc77e617c8b16c50f7f693df7}{rightRotate}}(root);}
+\DoxyCodeLine{307         \}}
+\DoxyCodeLine{308         \textcolor{keywordflow}{if} (balance < -\/1 \&\& \mbox{\hyperlink{classstatus_aae9bfc22fea1567f295f69430db8d668}{getBalance}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}) <= 0)}
+\DoxyCodeLine{309             \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a6b2bf08b6c334dfda7f2e6622df77d0d}{leftRotate}}(root);}
+\DoxyCodeLine{310         \textcolor{keywordflow}{if} (balance < -\/1 \&\& \mbox{\hyperlink{classstatus_aae9bfc22fea1567f295f69430db8d668}{getBalance}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}) > 0)\{}
+\DoxyCodeLine{311             root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} = \mbox{\hyperlink{classstatus_a04fc01dcc77e617c8b16c50f7f693df7}{rightRotate}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}});}
+\DoxyCodeLine{312             \textcolor{keywordflow}{return} \mbox{\hyperlink{classstatus_a6b2bf08b6c334dfda7f2e6622df77d0d}{leftRotate}}(root);}
+\DoxyCodeLine{313         \}}
+\DoxyCodeLine{314         \textcolor{keywordflow}{return} root;}
+\DoxyCodeLine{315     \}}
+\DoxyCodeLine{316 }
+\DoxyCodeLine{318     \textcolor{keywordtype}{void} \mbox{\hyperlink{classstatus_a9bb28d6bc8a366081f30c76ca09445b3}{preOrder}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}}* root)\{}
+\DoxyCodeLine{319         \textcolor{keywordflow}{if}(root!=NULL)\{}
+\DoxyCodeLine{320             cout<<root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}<<\textcolor{stringliteral}{"{} "{}}<<root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}<<\textcolor{stringliteral}{"{} "{}}<<root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}<<\textcolor{stringliteral}{"{} "{}}<<root-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}<<\textcolor{stringliteral}{"{} "{}}<<root-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}}<<endl;}
+\DoxyCodeLine{321             \mbox{\hyperlink{classstatus_a9bb28d6bc8a366081f30c76ca09445b3}{preOrder}}(root-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}});}
+\DoxyCodeLine{322             \mbox{\hyperlink{classstatus_a9bb28d6bc8a366081f30c76ca09445b3}{preOrder}}(root-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}});}
+\DoxyCodeLine{323         \}}
+\DoxyCodeLine{324     \}}
+\DoxyCodeLine{325 }
+\DoxyCodeLine{327     \textcolor{keywordtype}{void} \mbox{\hyperlink{classstatus_abc50ce9d6972a1abf53ca5ea018afa06}{getLeftNeighbor}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}}* node, \mbox{\hyperlink{struct_line}{Line}} l1, \textcolor{keywordtype}{double} y\_coor, \mbox{\hyperlink{struct_line}{Line}}* lastRight)\{}
+\DoxyCodeLine{328         \textcolor{comment}{//cout<<"{}Entered Left Neighbor"{}<<node-\/>height<<endl;}}
+\DoxyCodeLine{329         \textcolor{comment}{//cout<<l1.upper.x<<"{} "{}<<l1.upper.y<<endl;}}
+\DoxyCodeLine{330         \textcolor{keywordflow}{if}(node-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}} == 1)\{}
+\DoxyCodeLine{331             \textcolor{keywordflow}{if}(lastRight-\/>\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} == -\/1)\{}
+\DoxyCodeLine{332                 \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1) < \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor-\/0.1))}
+\DoxyCodeLine{333                     *lastRight = node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{334             \}}
+\DoxyCodeLine{335             return ;}
+\DoxyCodeLine{336         \}}
+\DoxyCodeLine{337         }
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339         \textcolor{keywordflow}{if}((\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor-\/0.1) -\/ 0.1) < \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1))}
+\DoxyCodeLine{340             \mbox{\hyperlink{classstatus_abc50ce9d6972a1abf53ca5ea018afa06}{getLeftNeighbor}}(node-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}, l1, y\_coor, lastRight);}
+\DoxyCodeLine{341         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor-\/0.1) -\/ 0.1) > \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1))\{}
+\DoxyCodeLine{342             *lastRight = node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{343             \mbox{\hyperlink{classstatus_abc50ce9d6972a1abf53ca5ea018afa06}{getLeftNeighbor}}(node-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}, l1, y\_coor, lastRight);}
+\DoxyCodeLine{344         \}}
+\DoxyCodeLine{345     \}}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{348     \textcolor{keywordtype}{void} \mbox{\hyperlink{classstatus_ac3fdc48519afdbe5427e4bdb4d08ea0a}{getRightNeighbor}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}}* node, \mbox{\hyperlink{struct_line}{Line}} l1, \textcolor{keywordtype}{double} y\_coor, \mbox{\hyperlink{struct_line}{Line}}* lastLeft)\{}
+\DoxyCodeLine{349         \textcolor{comment}{//cout<<"{}Entered Right Neighbor"{}<<node-\/>height<<endl;}}
+\DoxyCodeLine{350         \textcolor{comment}{//cout<<l1.upper.x<<"{} "{}<<l1.upper.y<<endl;}}
+\DoxyCodeLine{351         \textcolor{keywordflow}{if}(node-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}} == 1)\{}
+\DoxyCodeLine{352             \textcolor{comment}{//cout<<"{}Found"{}<<endl;}}
+\DoxyCodeLine{353             \textcolor{keywordflow}{if}(lastLeft-\/>\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} == -\/1)\{}
+\DoxyCodeLine{354                 \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1) > \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor-\/0.1))}
+\DoxyCodeLine{355                     *lastLeft = node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{356             \}}
+\DoxyCodeLine{357             return ;}
+\DoxyCodeLine{358         \}}
+\DoxyCodeLine{359         \textcolor{keywordflow}{if}((\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor-\/0.1)+0.1) < \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1))\{}
+\DoxyCodeLine{360             *lastLeft = node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{361             \mbox{\hyperlink{classstatus_ac3fdc48519afdbe5427e4bdb4d08ea0a}{getRightNeighbor}}(node-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}, l1, y\_coor, lastLeft);}
+\DoxyCodeLine{362         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(l1, y\_coor-\/0.1)+0.1) > \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1))}
+\DoxyCodeLine{363             \mbox{\hyperlink{classstatus_ac3fdc48519afdbe5427e4bdb4d08ea0a}{getRightNeighbor}}(node-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}, l1, y\_coor, lastLeft);}
+\DoxyCodeLine{364         \textcolor{comment}{//cout<<"{}Exit Right Neighbor"{}<<endl;}}
+\DoxyCodeLine{365     \}}
+\DoxyCodeLine{366     }
+\DoxyCodeLine{368     \textcolor{keywordtype}{void} \mbox{\hyperlink{classstatus_ab4e5485d16dd7efb7d2127a62ab6450b}{getNeighbors}}(\mbox{\hyperlink{structstatus_queue}{statusQueue}}* node, \textcolor{keywordtype}{double} x\_coor, \textcolor{keywordtype}{double} y\_coor, \mbox{\hyperlink{struct_line}{Line}}* lastRight, \mbox{\hyperlink{struct_line}{Line}}* lastLeft)\{}
+\DoxyCodeLine{369         \textcolor{keywordflow}{if}(node-\/>\mbox{\hyperlink{structstatus_queue_ab6c8545d127287496eb56de9c09a281b}{height}} == 1)\{}
+\DoxyCodeLine{370             \textcolor{keywordflow}{if}(lastRight-\/>\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} == -\/1)\{}
+\DoxyCodeLine{371                 \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1) <= x\_coor)}
+\DoxyCodeLine{372                     *lastRight = node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{373             \}}
+\DoxyCodeLine{374             \textcolor{keywordflow}{if}(lastLeft-\/>\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} == -\/1)\{}
+\DoxyCodeLine{375                 \textcolor{keywordflow}{if}(\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1) > x\_coor)}
+\DoxyCodeLine{376                     *lastLeft = node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{377             \}}
+\DoxyCodeLine{378             return ;}
+\DoxyCodeLine{379         \}}
+\DoxyCodeLine{380         \textcolor{keywordflow}{if}(x\_coor < \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1))\{}
+\DoxyCodeLine{381             *lastLeft = node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{382             \mbox{\hyperlink{classstatus_ab4e5485d16dd7efb7d2127a62ab6450b}{getNeighbors}}(node-\/>\mbox{\hyperlink{structstatus_queue_ab2f8339c62785602447f5ca651f8881c}{left}}, x\_coor, y\_coor, lastRight, lastLeft);}
+\DoxyCodeLine{383         \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(x\_coor > \mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}(node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}}, y\_coor-\/0.1))\{}
+\DoxyCodeLine{384             *lastRight = node-\/>\mbox{\hyperlink{structstatus_queue_aef6297f99a90c95953e335e8893eafcf}{segment}};}
+\DoxyCodeLine{385             \textcolor{keywordflow}{if}(node-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}} == NULL)}
+\DoxyCodeLine{386                 return ;}
+\DoxyCodeLine{387             \mbox{\hyperlink{classstatus_ab4e5485d16dd7efb7d2127a62ab6450b}{getNeighbors}}(node-\/>\mbox{\hyperlink{structstatus_queue_ac692f122cb3e077a8c97d5971e7e8f21}{right}}, x\_coor, y\_coor, lastRight, lastLeft);}
+\DoxyCodeLine{388         \}}
+\DoxyCodeLine{389     \}}
+\DoxyCodeLine{390 \};}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{392 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

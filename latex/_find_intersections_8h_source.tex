@@ -1,0 +1,242 @@
+\hypertarget{_find_intersections_8h_source}{}\doxysection{Find\+Intersections.\+h}
+\label{_find_intersections_8h_source}\index{DAA-\/Assignment-\/1/2018B4A70812H\_2018B4A70713H\_2018B4A70922H\_DAA Assignment 1/FindIntersections.h@{DAA-\/Assignment-\/1/2018B4A70812H\_2018B4A70713H\_2018B4A70922H\_DAA Assignment 1/FindIntersections.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef INTER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define INTER\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <bits/stdc++.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}statusQueue.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}eventQueue.h"{}}}
+\DoxyCodeLine{7 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_find_intersections}{FindIntersections}}\{}
+\DoxyCodeLine{13     \textcolor{keyword}{private}:}
+\DoxyCodeLine{14     \textcolor{keyword}{event} newEvent;}
+\DoxyCodeLine{15     \mbox{\hyperlink{structevent_queue}{eventQueue}}* eq\_root = NULL;}
+\DoxyCodeLine{16     \mbox{\hyperlink{classstatus}{status}} newStatus = \mbox{\hyperlink{classstatus}{status}}();}
+\DoxyCodeLine{17     \mbox{\hyperlink{structstatus_queue}{statusQueue}}* st\_root = NULL;}
+\DoxyCodeLine{18     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{24     \mbox{\hyperlink{class_find_intersections_a4b5e9de1d5f6101441ab9d12ef76045a}{FindIntersections}}(vector<Line> \&segments)\{}
+\DoxyCodeLine{25         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = segments.begin(); it!=segments.end(); it++)\{}
+\DoxyCodeLine{26             \textcolor{keywordtype}{double} sx, sy, ex, ey;}
+\DoxyCodeLine{27             \textcolor{keywordflow}{if}((*it).upper.y >= (*it).lower.y)\{}
+\DoxyCodeLine{28                 sx = (*it).upper.x;}
+\DoxyCodeLine{29                 sy = (*it).upper.y;}
+\DoxyCodeLine{30                 ex = (*it).lower.x;}
+\DoxyCodeLine{31                 ey = (*it).lower.y;}
+\DoxyCodeLine{32             \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{33                 sx = (*it).lower.x;}
+\DoxyCodeLine{34                 sy = (*it).lower.y;}
+\DoxyCodeLine{35                 ex = (*it).upper.x;}
+\DoxyCodeLine{36                 ey = (*it).upper.y;}
+\DoxyCodeLine{37             \}}
+\DoxyCodeLine{38             \textcolor{keywordflow}{if}((*it).upper.y == (*it).lower.y)\{}
+\DoxyCodeLine{39                 \textcolor{keywordflow}{if}((*it).upper.x <= (*it).lower.x)\{}
+\DoxyCodeLine{40                     sx = (*it).upper.x;}
+\DoxyCodeLine{41                     sy = (*it).upper.y;}
+\DoxyCodeLine{42                     ex = (*it).lower.x;}
+\DoxyCodeLine{43                     ey = (*it).lower.y;}
+\DoxyCodeLine{44                 \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{45                     sx = (*it).lower.x;}
+\DoxyCodeLine{46                     sy = (*it).lower.y;}
+\DoxyCodeLine{47                     ex = (*it).upper.x;}
+\DoxyCodeLine{48                     ey = (*it).upper.y;}
+\DoxyCodeLine{49                 \}}
+\DoxyCodeLine{50             \}}
+\DoxyCodeLine{51             \mbox{\hyperlink{struct_point}{Point}} eventPoint;}
+\DoxyCodeLine{52             \mbox{\hyperlink{struct_line}{Line}} l1;}
+\DoxyCodeLine{53             eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = sx;}
+\DoxyCodeLine{54             eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = sy;}
+\DoxyCodeLine{55             l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = sx;}
+\DoxyCodeLine{56             l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = sy;}
+\DoxyCodeLine{57             l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = ex;}
+\DoxyCodeLine{58             l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = ey;}
+\DoxyCodeLine{59             eq\_root = newEvent.\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(eq\_root, eventPoint, l1, 1);}
+\DoxyCodeLine{60             eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = ex;}
+\DoxyCodeLine{61             eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = ey;}
+\DoxyCodeLine{62             eq\_root = newEvent.\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(eq\_root, eventPoint, l1, 2);}
+\DoxyCodeLine{63         \}}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{66     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_find_intersections_a0bd6e01d473cce14fd81e66f540dc6b2}{min}}(\textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} b)\{}
+\DoxyCodeLine{67         \textcolor{keywordflow}{return} (a>b)?b:a;}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{70     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_find_intersections_a14573c98e18d0439bc61c693f8842189}{onSegment}}(\mbox{\hyperlink{struct_point}{Point}} p, \mbox{\hyperlink{struct_point}{Point}} q, \mbox{\hyperlink{struct_point}{Point}} r)\{}
+\DoxyCodeLine{71         \textcolor{keywordflow}{if}(q.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} <= max(p.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}, r.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}) \&\& q.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} >=\mbox{\hyperlink{class_find_intersections_a0bd6e01d473cce14fd81e66f540dc6b2}{min}}(p.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}, r.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}) \&\& q.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} <=max(p.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}, r.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}) \&\& q.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} >= \mbox{\hyperlink{class_find_intersections_a0bd6e01d473cce14fd81e66f540dc6b2}{min}}(p.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}, r.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}))\{}
+\DoxyCodeLine{72             \textcolor{keywordflow}{return} \textcolor{keyword}{true};    }
+\DoxyCodeLine{73         \}}
+\DoxyCodeLine{74         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{75     \}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{82     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_find_intersections_ab22dae2fb8ef78f4e263e2f3cc5c64c2}{orientation}}(\mbox{\hyperlink{struct_point}{Point}} p, \mbox{\hyperlink{struct_point}{Point}} q, \mbox{\hyperlink{struct_point}{Point}} r)\{}
+\DoxyCodeLine{83         \textcolor{keywordtype}{double} val = (q.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ p.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}) * (r.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} -\/ q.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}) -\/ (q.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} -\/ p.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}) * (r.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ q.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}});}
+\DoxyCodeLine{84         \textcolor{keywordflow}{if}(val == 0)}
+\DoxyCodeLine{85             \textcolor{keywordflow}{return} 0; \textcolor{comment}{//collinear}}
+\DoxyCodeLine{86         \textcolor{keywordflow}{return} (val > 0)?1:2; \textcolor{comment}{//clockwise, anti-\/clockwise}}
+\DoxyCodeLine{87     \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{91     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_find_intersections_a0cbf7b243adbacb3732f57fbc2fb6c88}{checkIntersect}}(\mbox{\hyperlink{struct_line}{Line}} l1, \mbox{\hyperlink{struct_line}{Line}} l2)\{}
+\DoxyCodeLine{92         \textcolor{comment}{//cout<<"{}CI"{}<<endl;}}
+\DoxyCodeLine{93         \mbox{\hyperlink{struct_point}{Point}} p1, q1, p2, q2;}
+\DoxyCodeLine{94         p1.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{95         p1.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}};}
+\DoxyCodeLine{96         q1.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{97         q1.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}};}
+\DoxyCodeLine{98         p2.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = l2.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{99         p2.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = l2.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}};}
+\DoxyCodeLine{100         q2.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = l2.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{101         q2.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = l2.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}};}
+\DoxyCodeLine{102         \textcolor{keywordtype}{int} o1 = \mbox{\hyperlink{class_find_intersections_ab22dae2fb8ef78f4e263e2f3cc5c64c2}{orientation}}(p1, q1, p2);}
+\DoxyCodeLine{103         \textcolor{keywordtype}{int} o2 = \mbox{\hyperlink{class_find_intersections_ab22dae2fb8ef78f4e263e2f3cc5c64c2}{orientation}}(p1, q1, q2);}
+\DoxyCodeLine{104         \textcolor{keywordtype}{int} o3 = \mbox{\hyperlink{class_find_intersections_ab22dae2fb8ef78f4e263e2f3cc5c64c2}{orientation}}(p2, q2, p1);}
+\DoxyCodeLine{105         \textcolor{keywordtype}{int} o4 = \mbox{\hyperlink{class_find_intersections_ab22dae2fb8ef78f4e263e2f3cc5c64c2}{orientation}}(p2, q2, q1);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107         \textcolor{keywordflow}{if}(o1 != o2 \&\& o3 != o4)}
+\DoxyCodeLine{108             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{109         }
+\DoxyCodeLine{110         \textcolor{keywordflow}{if}(o1 == 0 \&\& \mbox{\hyperlink{class_find_intersections_a14573c98e18d0439bc61c693f8842189}{onSegment}}(p1, p2, q1))}
+\DoxyCodeLine{111             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{112         \textcolor{keywordflow}{if}(o2 == 0 \&\& \mbox{\hyperlink{class_find_intersections_a14573c98e18d0439bc61c693f8842189}{onSegment}}(p1, q2, q1))}
+\DoxyCodeLine{113             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{114         \textcolor{keywordflow}{if}(o3 == 0 \&\& \mbox{\hyperlink{class_find_intersections_a14573c98e18d0439bc61c693f8842189}{onSegment}}(p2, p1, q2))}
+\DoxyCodeLine{115             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{116         \textcolor{keywordflow}{if}(o4 == 0 \&\& \mbox{\hyperlink{class_find_intersections_a14573c98e18d0439bc61c693f8842189}{onSegment}}(p2, q1, q2))}
+\DoxyCodeLine{117             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{118         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{119     \}}
+\DoxyCodeLine{120     \textcolor{comment}{//*! This function returns the point of intersection (if any) of two lines l1 and l2.}}
+\DoxyCodeLine{123 \textcolor{comment}{}    \mbox{\hyperlink{struct_point}{Point}} \mbox{\hyperlink{class_find_intersections_a416ff768f08db4765d5ad3f64eb1a087}{intersectionOf}}(\mbox{\hyperlink{struct_line}{Line}} l1, \mbox{\hyperlink{struct_line}{Line}} l2)\{}
+\DoxyCodeLine{124         \mbox{\hyperlink{struct_point}{Point}} intersect;}
+\DoxyCodeLine{125         \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_find_intersections_a0cbf7b243adbacb3732f57fbc2fb6c88}{checkIntersect}}(l1, l2) == 0)\{}
+\DoxyCodeLine{126             intersect.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = -\/1;}
+\DoxyCodeLine{127             intersect.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = -\/1;}
+\DoxyCodeLine{128         \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{129             \textcolor{keywordtype}{double} a1 = l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}};}
+\DoxyCodeLine{130             \textcolor{keywordtype}{double} b1 = l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} -\/ l1.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{131             \textcolor{keywordtype}{double} c1 = a1*(l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}) + b1*(l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}});}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133             \textcolor{keywordtype}{double} a2 = l2.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ l2.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}};}
+\DoxyCodeLine{134             \textcolor{keywordtype}{double} b2 = l2.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} -\/ l2.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}};}
+\DoxyCodeLine{135             \textcolor{keywordtype}{double} c2 = a2*(l2.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}) + b2*(l2.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}});}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137             \textcolor{keywordtype}{double} determinant = a1*b2 -\/ a2*b1;}
+\DoxyCodeLine{138             intersect.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = (b2*c1 -\/ b1*c2)/determinant;}
+\DoxyCodeLine{139             intersect.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} = (a1*c2 -\/ a2*c1)/determinant;}
+\DoxyCodeLine{140         \}}
+\DoxyCodeLine{141         \textcolor{keywordflow}{return} intersect;}
+\DoxyCodeLine{142     \}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{147     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_find_intersections_a1859fdfb92a9e0a80ea862ecc7cfbce0}{findNewEvent}}(\mbox{\hyperlink{struct_line}{Line}} l1, \mbox{\hyperlink{struct_line}{Line}} l2, \mbox{\hyperlink{structevent_queue}{eventQueue}}* p)\{}
+\DoxyCodeLine{148         \textcolor{comment}{//cout<<"{}FNE -\/ 1"{}<<endl;}}
+\DoxyCodeLine{149         \mbox{\hyperlink{struct_point}{Point}} newEventPoint = \mbox{\hyperlink{class_find_intersections_a416ff768f08db4765d5ad3f64eb1a087}{intersectionOf}}(l1, l2);}
+\DoxyCodeLine{150         \textcolor{keywordflow}{if}(newEventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} != -\/ 1)\{}
+\DoxyCodeLine{151             \textcolor{keywordflow}{if}(newEventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} < p-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})\{}
+\DoxyCodeLine{152                 eq\_root = newEvent.\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(eq\_root, newEventPoint, l1, 3);}
+\DoxyCodeLine{153                 eq\_root = newEvent.\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(eq\_root, newEventPoint, l2, 3);}
+\DoxyCodeLine{154             \}\textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(newEventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} == p-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} \&\& newEventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} > p-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}})\{}
+\DoxyCodeLine{155                 eq\_root = newEvent.\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(eq\_root, newEventPoint, l1, 3);}
+\DoxyCodeLine{156                 eq\_root = newEvent.\mbox{\hyperlink{classevent_ae91c1c09ebf4ff5488997f792f581484}{inserti}}(eq\_root, newEventPoint, l2, 3);}
+\DoxyCodeLine{157             \}}
+\DoxyCodeLine{158         \}}
+\DoxyCodeLine{159         \textcolor{comment}{//cout<<"{}FNE -\/ END"{}<<endl;}}
+\DoxyCodeLine{160     \}}
+\DoxyCodeLine{162     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_find_intersections_a8a6d0b1b76c36402d8f0d192dc23f9c2}{contains}}(vector<Line> segments, \mbox{\hyperlink{struct_line}{Line}} l)\{}
+\DoxyCodeLine{163         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it=segments.begin(); it!=segments.end(); it++)\{}
+\DoxyCodeLine{164             \textcolor{keywordflow}{if}((*it).upper.x == l.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} \&\& (*it).upper.y == l.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} \&\& (*it).lower.x == l.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} \&\& (*it).lower.y == l.\mbox{\hyperlink{struct_line_aa17bd1fc756034b57a67a2c2af2590e4}{lower}}.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}})\{}
+\DoxyCodeLine{165                 \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{166             \}}
+\DoxyCodeLine{167         \}}
+\DoxyCodeLine{168         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{169     \}}
+\DoxyCodeLine{171     vector<Line> \mbox{\hyperlink{class_find_intersections_a5915a50a7cdcfb980a02a4702824bbbc}{unionOf}}(vector<Line> a, vector<Line> b)\{}
+\DoxyCodeLine{172         vector<Line> union\_vec;}
+\DoxyCodeLine{173         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = a.begin(); it!=a.end(); it++)}
+\DoxyCodeLine{174             union\_vec.push\_back((*it));}
+\DoxyCodeLine{175         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = b.begin(); it!=b.end(); it++)\{}
+\DoxyCodeLine{176             \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_find_intersections_a8a6d0b1b76c36402d8f0d192dc23f9c2}{contains}}(union\_vec, (*it)) == 1)}
+\DoxyCodeLine{177                 union\_vec.push\_back((*it));}
+\DoxyCodeLine{178         \}}
+\DoxyCodeLine{179         \textcolor{keywordflow}{return} union\_vec;}
+\DoxyCodeLine{180     \}}
+\DoxyCodeLine{182     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_find_intersections_a6600cfac425a8b92664764a0a03de454}{empty}}(vector<Line> x)\{}
+\DoxyCodeLine{183         \textcolor{keywordflow}{if}(x.size() == 0)}
+\DoxyCodeLine{184             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{185         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{186     \}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{189 }
+\DoxyCodeLine{192     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_find_intersections_a1fdc7e92756409d0278625f33a8a1639}{handleEventPoint}}(\mbox{\hyperlink{structevent_queue}{eventQueue}}* eventer)\{}
+\DoxyCodeLine{193         \textcolor{comment}{//cout<<"{}Process-\/HEP"{}<<endl;}}
+\DoxyCodeLine{194         vector<Line> all = \mbox{\hyperlink{class_find_intersections_a5915a50a7cdcfb980a02a4702824bbbc}{unionOf}}(eventer-\/>L, \mbox{\hyperlink{class_find_intersections_a5915a50a7cdcfb980a02a4702824bbbc}{unionOf}}(eventer-\/>U, eventer-\/>C));}
+\DoxyCodeLine{195         \textcolor{keywordflow}{if}(all.size() > 1)}
+\DoxyCodeLine{196             cout<<\textcolor{stringliteral}{"{}Intersection: "{}}<<eventer-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}<<\textcolor{stringliteral}{"{} "{}}<<eventer-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}<<endl;}
+\DoxyCodeLine{197         \textcolor{comment}{//cout<<"{}HEP -\/ 4"{}<<endl;}}
+\DoxyCodeLine{198         vector<Line> deleters = \mbox{\hyperlink{class_find_intersections_a5915a50a7cdcfb980a02a4702824bbbc}{unionOf}}(eventer-\/>L, eventer-\/>C);}
+\DoxyCodeLine{199         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it=deleters.begin(); it!=deleters.end(); it++)\{}
+\DoxyCodeLine{200             st\_root = newStatus.\mbox{\hyperlink{classstatus_a01d56d10b211b10d80b174d17fed3f73}{deleteSegment}}(st\_root, (*it), eventer-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}});}
+\DoxyCodeLine{201         \}}
+\DoxyCodeLine{202         \textcolor{comment}{//cout<<"{}HEP -\/ 5"{}<<endl;}}
+\DoxyCodeLine{203         vector<Line> inserters = \mbox{\hyperlink{class_find_intersections_a5915a50a7cdcfb980a02a4702824bbbc}{unionOf}}(eventer-\/>U, eventer-\/>C);}
+\DoxyCodeLine{204         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it=inserters.begin(); it!=inserters.end(); it++)}
+\DoxyCodeLine{205             st\_root = newStatus.\mbox{\hyperlink{classstatus_ac502e40166879f2c837a1d0aaed12656}{inserti}}(st\_root, (*it), eventer-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ 0.1);}
+\DoxyCodeLine{206         }
+\DoxyCodeLine{207         \textcolor{comment}{//cout<<"{}HEP -\/ 8"{}<<endl;}}
+\DoxyCodeLine{208         \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_find_intersections_a6600cfac425a8b92664764a0a03de454}{empty}}(inserters))\{}
+\DoxyCodeLine{209             \textcolor{comment}{//cout<<"{}HEP -\/ 10"{}<<endl;}}
+\DoxyCodeLine{210             \mbox{\hyperlink{struct_line}{Line}} l1, l2;}
+\DoxyCodeLine{211             l1.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = -\/1;}
+\DoxyCodeLine{212             l2.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = -\/1;}
+\DoxyCodeLine{213             newStatus.\mbox{\hyperlink{classstatus_ab4e5485d16dd7efb7d2127a62ab6450b}{getNeighbors}}(st\_root, eventer-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}, eventer-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}} -\/ 0.1, \&l1, \&l2);}
+\DoxyCodeLine{214         \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{215             \textcolor{comment}{//cout<<"{}HEP -\/ 11"{}<<endl;}}
+\DoxyCodeLine{216             \mbox{\hyperlink{struct_line}{Line}} l1, l2;}
+\DoxyCodeLine{217             \textcolor{keywordtype}{double} max = -\/1.0, \mbox{\hyperlink{class_find_intersections_a0bd6e01d473cce14fd81e66f540dc6b2}{min}} = 1001.0;}
+\DoxyCodeLine{218             \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = inserters.begin(); it!=inserters.end(); it++)\{}
+\DoxyCodeLine{219                 \textcolor{keywordtype}{double} x = newStatus.\mbox{\hyperlink{classstatus_a723dd8c009831e6a2dd8c3b86930d74e}{sloper}}((*it), eventer-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}});}
+\DoxyCodeLine{220                 \textcolor{comment}{//cout<<(*it).lower.x<<"{} "{}<<(*it).lower.y<<"{} "{}<<(*it).upper.x<<"{} "{}<<(*it).upper.y<<"{} "{}<<eventer-\/>eventPoint.y<<endl;}}
+\DoxyCodeLine{221                 \textcolor{comment}{//cout<<x<<endl;}}
+\DoxyCodeLine{222                 \textcolor{keywordtype}{double} minX = ((*it).upper.x < (*it).lower.x)?(*it).upper.x:(*it).lower.x;}
+\DoxyCodeLine{223                 \textcolor{keywordtype}{double} maxX = ((*it).upper.x > (*it).lower.x)?(*it).upper.x:(*it).lower.x;}
+\DoxyCodeLine{224                 \textcolor{keywordflow}{if}(x < \mbox{\hyperlink{class_find_intersections_a0bd6e01d473cce14fd81e66f540dc6b2}{min}} \&\& x <=maxX \&\& x>=minX)\{}
+\DoxyCodeLine{225                     \mbox{\hyperlink{class_find_intersections_a0bd6e01d473cce14fd81e66f540dc6b2}{min}} = x;}
+\DoxyCodeLine{226                     \textcolor{comment}{//cout<<(*it).upper.x<<"{} "{}<<(*it).upper.y<<endl;}}
+\DoxyCodeLine{227                     l1 = (*it);}
+\DoxyCodeLine{228                 \}}
+\DoxyCodeLine{229                 \textcolor{keywordflow}{if}(x > max \&\& x <= maxX \&\& x >=minX)\{}
+\DoxyCodeLine{230                     max = x;}
+\DoxyCodeLine{231                     \textcolor{comment}{//cout<<(*it).upper.x<<"{} "{}<<(*it).upper.y<<endl;}}
+\DoxyCodeLine{232                     l2 = (*it);}
+\DoxyCodeLine{233                 \}}
+\DoxyCodeLine{234             \}}
+\DoxyCodeLine{235             \mbox{\hyperlink{struct_line}{Line}} l3, l4;}
+\DoxyCodeLine{236             l3.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = -\/1;}
+\DoxyCodeLine{237             l4.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} = -\/1;}
+\DoxyCodeLine{238             \textcolor{comment}{//cout<<"{}HEP -\/ 11-\/13"{}<<endl;}}
+\DoxyCodeLine{239             newStatus.\mbox{\hyperlink{classstatus_abc50ce9d6972a1abf53ca5ea018afa06}{getLeftNeighbor}}(st\_root, l1, eventer-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}, \&l3);}
+\DoxyCodeLine{240             \textcolor{comment}{//cout<<"{}HEP 12"{}<<endl;}}
+\DoxyCodeLine{241             newStatus.\mbox{\hyperlink{classstatus_ac3fdc48519afdbe5427e4bdb4d08ea0a}{getRightNeighbor}}(st\_root, l2, eventer-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}}, \&l4);}
+\DoxyCodeLine{242             \textcolor{comment}{//cout<<"{}HEP -\/ 13"{}<<endl;}}
+\DoxyCodeLine{243             \textcolor{keywordflow}{if}(l3.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} != -\/1 \&\& \mbox{\hyperlink{class_find_intersections_a0bd6e01d473cce14fd81e66f540dc6b2}{min}}!=1001)}
+\DoxyCodeLine{244                 \mbox{\hyperlink{class_find_intersections_a1859fdfb92a9e0a80ea862ecc7cfbce0}{findNewEvent}}(l3, l1, eventer);}
+\DoxyCodeLine{245             \textcolor{keywordflow}{if}(l4.\mbox{\hyperlink{struct_line_a577aec2c2a3ea2c3053b5f6f509e538f}{upper}}.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}} != -\/1 \&\& max != -\/ 1)}
+\DoxyCodeLine{246                 \mbox{\hyperlink{class_find_intersections_a1859fdfb92a9e0a80ea862ecc7cfbce0}{findNewEvent}}(l2, l4, eventer);}
+\DoxyCodeLine{247             \textcolor{comment}{//cout<<"{}HEP -\/ END"{}<<endl;}}
+\DoxyCodeLine{248         \}}
+\DoxyCodeLine{249     \}}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{252     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_find_intersections_af69ee532a6b8ae26e603c70f0121540d}{runAlgorithm}}()\{}
+\DoxyCodeLine{253         \textcolor{keywordflow}{while}(eq\_root!=NULL)\{}
+\DoxyCodeLine{254             \mbox{\hyperlink{structevent_queue}{eventQueue}}* pop = newEvent.\mbox{\hyperlink{classevent_a5816a478cc295b8f58edfe2fc5337481}{maxValueEvent}}(eq\_root);}
+\DoxyCodeLine{255             \textcolor{keywordflow}{if}(pop != NULL)\{}
+\DoxyCodeLine{256                 \mbox{\hyperlink{class_find_intersections_a1fdc7e92756409d0278625f33a8a1639}{handleEventPoint}}(pop);}
+\DoxyCodeLine{257                 \textcolor{comment}{//newStatus.preOrder(st\_root);}}
+\DoxyCodeLine{258                 eq\_root = newEvent.\mbox{\hyperlink{classevent_aae783e657c37c9850a9f5cff3e525b10}{deleteNode}}(eq\_root, pop-\/>eventPoint.\mbox{\hyperlink{struct_point_ab99c56589bc8ad5fa5071387110a5bc7}{x}}, pop-\/>eventPoint.\mbox{\hyperlink{struct_point_afa38be143ae800e6ad69ce8ed4df62d8}{y}});}
+\DoxyCodeLine{259             \}}
+\DoxyCodeLine{260         \}}
+\DoxyCodeLine{261         cout<<\textcolor{stringliteral}{"{}Execution Complete"{}}<<endl;}
+\DoxyCodeLine{262     \}}
+\DoxyCodeLine{263 \};}
+\DoxyCodeLine{264 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
