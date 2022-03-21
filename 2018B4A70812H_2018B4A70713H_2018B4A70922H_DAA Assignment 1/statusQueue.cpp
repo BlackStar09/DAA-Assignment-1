@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
+#include "statusQueue.h"
 using namespace std;
 
 
-struct Point{
+/*struct Point{
     int x;
     int y;
     int type;
@@ -168,8 +169,83 @@ statusQueue* deleteSegment(statusQueue* root){
     return root;
 }
 
-
+*/
 int main()
 {
+    statusQueue* root = NULL;
+    status newStatus;
+    cout<<"1 to push, 2 to pop, 3 to find neighbour, 4 to find neighbour for line, 0 to exit"<<endl;
+    int control;
+    Line newL;
+    cin>>control;
+    double xs, ys, xe, ye, y_coor;
+    cout.precision(17);
+    while(control!=0){
+        if(control==1){
+            newStatus.two_insert = 0;
+            cout<<"Enter New Line Segment Details and y"<<endl;
+            cin>>xs>>ys>>xe>>ye>>y_coor;
+            newL.upper.x = xs;
+            newL.upper.y = ys;
+            newL.lower.x = xe;
+            newL.lower.y = ye;
+            root = newStatus.inserti(root, newL, y_coor-1);
+            cout<<"Inserted"<<endl;
+        }
+        if(control==2){
+            cout<<"Enter Event Details to Delete and y"<<endl;
+            cin>>xs>>ys>>xe>>ye>>y_coor;
+            newL.upper.x = xs;
+            newL.upper.y = ys;
+            newL.lower.x = xe;
+            newL.lower.y = ye;
+            root = newStatus.deleteSegment(root, newL, y_coor+1);
+            root = newStatus.deleteSegment(root, newL, y_coor+1);
+            cout<<"Deleted from Status Queue"<<endl;
+        }
+        if(control==3){
+            cout<<"Enter Point"<<endl;
+            double px, py;
+            cin>>px>>py;
+            Line lef1, right1;
+            lef1.upper.x = -1;
+            right1.upper.x = -1;
+
+            newStatus.getNeighbors(root, px, py-0.1, &lef1, &right1);
+            if(lef1.upper.x == -1)
+                cout<<"No left line"<<endl;
+            else
+                cout<<"Left Line: "<<lef1.upper.x<<" "<<lef1.upper.y<<" "<<lef1.lower.x<<" "<<lef1.lower.y<<endl;
+            if(right1.upper.x == -1)
+                cout<<"No Right line"<<endl;
+            else
+                cout<<"Right Line: "<<right1.upper.x<<" "<<right1.upper.y<<" "<<right1.lower.x<<" "<<right1.lower.y<<endl;
+            
+        }
+        if(control==4){
+            cout<<"Enter Line"<<endl;
+            cin>>xs>>ys>>xe>>ye>>y_coor;
+            Line left1, right1;
+            left1.upper.x = -1;
+            right1.upper.x = -1;
+            newL.upper.x = xs;
+            newL.upper.y = ys;
+            newL.lower.x = xe;
+            newL.lower.y = ye;
+            newStatus.getLeftNeighbor(root, newL, y_coor, &left1);
+            newStatus.getRightNeighbor(root, newL, y_coor, &right1);
+            if(left1.upper.x == -1)
+                cout<<"No left line"<<endl;
+            else
+                 cout<<"Left Line: "<<left1.upper.x<<" "<<left1.upper.y<<" "<<left1.lower.x<<" "<<left1.lower.y<<endl;
+            if(right1.upper.x == -1)
+                cout<<"No Right line"<<endl;
+            else
+                cout<<"Right Line: "<<right1.upper.x<<" "<<right1.upper.y<<" "<<right1.lower.x<<" "<<right1.lower.y<<endl;       
+        }
+        newStatus.preOrder(root);
+        cout<<"1 to push, 2 to pop, 3 to neighbours for a point, 4 to find neighbours for a line, 0 to exit"<<endl;
+        cin>>control;
+    }
     return 0;
 }
