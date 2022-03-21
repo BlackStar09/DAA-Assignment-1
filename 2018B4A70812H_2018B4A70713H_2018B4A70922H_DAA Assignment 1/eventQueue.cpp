@@ -35,7 +35,7 @@ int main()
             }
             eventQueue* pop = newEvent.maxValueEvent(root);
             cout<<"Popped point: "<<pop->eventPoint.x<<" "<<pop->eventPoint.y<<endl;
-            root = newEvent.deleteEvent(root);
+            root = newEvent.deleteNode(root, pop->eventPoint.x, pop->eventPoint.y);
         }
         if(root!=NULL)
             newEvent.preOrder(root);

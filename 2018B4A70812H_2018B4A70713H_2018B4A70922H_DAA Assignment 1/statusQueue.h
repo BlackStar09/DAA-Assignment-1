@@ -7,8 +7,8 @@ using namespace std;
 
 
 struct Point{
-    int x;
-    int y;
+    double x;
+    double y;
     int type;
 };
 
@@ -106,7 +106,10 @@ class status{
     }
 
     double sloper(Line l1, double y){
-        return ((y - l1.lower.y)*(l1.lower.x - l1.upper.x)/(l1.lower.y - l1.upper.y)) + l1.lower.x;
+        if(l1.lower.y - l1.upper.y != 0)
+            return ((y - l1.lower.y)*(l1.lower.x - l1.upper.x)/(l1.lower.y - l1.upper.y)) + l1.lower.x;
+        else
+            return ((y - l1.lower.y)*(l1.lower.x - l1.upper.x)/(l1.lower.y - l1.upper.y + 1e-15)) + l1.lower.x;
     }
     int max(int a, int b){
         int maxer = a>b?a:b;
@@ -138,18 +141,18 @@ class status{
             return leftRotate(root);
         }
         return root;*/
-        cout<<"Entered"<<endl;
+        //cout<<"Entered"<<endl;
         int *jdouble = &two_insert;
         if(root == NULL){
             *jdouble = 1;
-            cout<<"Node Created"<<endl;
+            //cout<<"Node Created"<<endl;
             return createStatusQueueNode(l1);
         }
         //double suml1 = ((y_coor - l1.lower.y)*((l1.lower.x - l1.upper.x)/(l1.lower.y - l1.upper.y))) + l1.lower.x;
         //double sumr_segment = ((y_coor - root->segment.lower.y)*((root->segment.lower.x - root->segment.upper.x)/(root->segment.lower.y - root->segment.upper.y))) + root->segment.lower.x;
-        cout<<sloper(l1, y_coor)<<" "<<sloper(root->segment, y_coor)<<endl;
+        //cout<<sloper(l1, y_coor)<<" "<<sloper(root->segment, y_coor)<<endl;
         if(sloper(l1, y_coor) < sloper(root->segment, y_coor)){
-            cout<<"Moving Left"<<endl;
+            //cout<<"Moving Left"<<endl;
             root->left = inserti(root->left, l1, y_coor);
             if(*jdouble == 1){
                 root->right = createStatusQueueNode(root->segment);
@@ -157,7 +160,7 @@ class status{
                 *jdouble = 0;
             }
         }else if (sloper(l1, y_coor) > sloper(root->segment, y_coor)){
-            cout<<"Moving Right"<<endl;
+            //cout<<"Moving Right"<<endl;
             root->right = inserti(root->right, l1, y_coor);
             if(*jdouble == 1){
                 root->left = createStatusQueueNode(root->segment);
@@ -291,36 +294,42 @@ class status{
     }
 
     void getLeftNeighbor(statusQueue* node, Line l1, double y_coor, Line* lastRight){
+        //cout<<"Entered Left Neighbor"<<node->height<<endl;
+        //cout<<l1.upper.x<<" "<<l1.upper.y<<endl;
         if(node->height == 1){
             if(lastRight->upper.x == -1){
-                if(compare(node->segment, l1, y_coor-0.1))
+                if(sloper(node->segment, y_coor-0.1) < sloper(l1, y_coor-0.1))
                     *lastRight = node->segment;
             }
             return ;
         }
         
 
-        if(compare(l1, node->segment, y_coor-0.1))
+        if((sloper(l1, y_coor-0.1) - 0.1) < sloper(node->segment, y_coor-0.1))
             getLeftNeighbor(node->left, l1, y_coor, lastRight);
-        else if(compare(node->segment, l1, y_coor-0.1)){
+        else if((sloper(l1, y_coor-0.1) - 0.1) > sloper(node->segment, y_coor-0.1)){
             *lastRight = node->segment;
             getLeftNeighbor(node->right, l1, y_coor, lastRight);
         }
     }
 
     void getRightNeighbor(statusQueue* node, Line l1, double y_coor, Line* lastLeft){
+        //cout<<"Entered Right Neighbor"<<node->height<<endl;
+        //cout<<l1.upper.x<<" "<<l1.upper.y<<endl;
         if(node->height == 1){
+            //cout<<"Found"<<endl;
             if(lastLeft->upper.x == -1){
-                if(compare(l1, node->segment, y_coor-0.1))
+                if(sloper(node->segment, y_coor-0.1) > sloper(l1, y_coor-0.1))
                     *lastLeft = node->segment;
             }
             return ;
         }
-        if(compare(l1, node->segment, y_coor-0.1)){
+        if((sloper(l1, y_coor-0.1)+0.1) < sloper(node->segment, y_coor-0.1)){
             *lastLeft = node->segment;
             getRightNeighbor(node->left, l1, y_coor, lastLeft);
-        }else if(compare(node->segment, l1, y_coor-0.1))
+        }else if((sloper(l1, y_coor-0.1)+0.1) > sloper(node->segment, y_coor-0.1))
             getRightNeighbor(node->right, l1, y_coor, lastLeft);
+        //cout<<"Exit Right Neighbor"<<endl;
     }
     
     void getNeighbors(statusQueue* node, double x_coor, double y_coor, Line* lastRight, Line* lastLeft){

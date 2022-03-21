@@ -103,25 +103,25 @@ class event{
     eventQueue* inserti(eventQueue* root, Point eventPoint, Line l1, int teller)
     {
         if (root == NULL){
-            cout<<"Creating Node"<<endl;
+            //cout<<"Creating Node"<<endl;
             return createeventQueueNode(eventPoint, teller, l1);
         }
 
         //how to insert here?
         if(eventPoint.y<root->eventPoint.y){
-            cout<<"Moving Left"<<endl;
+            //cout<<"Moving Left"<<endl;
             root->left=inserti(root->left,eventPoint, l1, teller);
         }
         else if(eventPoint.y>root->eventPoint.y){
-            cout<<"Moving Right"<<endl;
+            //cout<<"Moving Right"<<endl;
             root->right=inserti(root->right, eventPoint, l1, teller);
         }
         else if(eventPoint.x>root->eventPoint.x){
-            cout<<"Moving Left"<<endl;
+            //cout<<"Moving Left"<<endl;
             root->left=inserti(root->left, eventPoint, l1, teller);
         }
         else if(eventPoint.x<root->eventPoint.x){
-            cout<<"Moving Right"<<endl;
+            //cout<<"Moving Right"<<endl;
             root->right=inserti(root->right, eventPoint, l1, teller);
         }
         else {
@@ -161,9 +161,9 @@ class event{
         }
 
         root->height =(height(root->left) > height(root->right))? height(root->left) + 1 : height(root->right) + 1 ;
-        cout<<"Started Balancing - "<<endl;
+        //cout<<"Started Balancing - "<<endl;
         int diff = heightDiff(root);
-        cout<<diff<<endl;
+        //cout<<diff<<endl;
         if (diff > 1 && (eventPoint.y < root->left->eventPoint.y || (eventPoint.y == root->left->eventPoint.y && eventPoint.x > root->left->eventPoint.x)))
             return rightRotate(root);
         if (diff < -1 && (eventPoint.y > root->right->eventPoint.y || (eventPoint.y == root->right->eventPoint.y && eventPoint.x<root->right->eventPoint.x)))
@@ -177,7 +177,7 @@ class event{
             root->right = rightRotate(root->right);
             return leftRotate(root);
         }
-        cout<<"Balancing Completed"<<endl;
+        //cout<<"Balancing Completed"<<endl;
         return root;
     }
 
