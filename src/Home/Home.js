@@ -34,13 +34,6 @@ class Home extends React.Component {
           Divide-and-Conquer to Compute Measure and Contour for a Set of
           Iso-Rectangles" by Ralf Hartmut Güting
         </h2>
-        <div style={{ justifyContent: "center", display: "flex" }}>
-          <img
-            src="https://miro.medium.com/max/855/1*SfBEvWNJpmLRf-Lj_M5f-g.png"
-            alt="Image"
-            style={{ alignSelf: "center", height: "200px", width: "400px" }}
-          />
-        </div>
         <StudentCarousel />
       </div>
     );
