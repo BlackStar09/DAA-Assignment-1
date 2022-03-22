@@ -22,15 +22,7 @@ class Visualization extends React.Component {
           size: 0,
           name: ""
         });
-        var p3 = b1.create("point", [coords[i].y2, coords[i].x2], {
-          size: 0,
-          name: ""
-        });
-        var p4 = b1.create("point", [coords[i].y2, coords[i].x1], {
-          size: 0,
-          name: ""
-        });
-        var poly = b1.create("polygon", [p1, p2, p3, p4], {
+        var poly = b1.create("line", [p1, p2, p3, p4], {
           borders: { strokeColor: "black" },
           fillColor: "#4287f5"
         });

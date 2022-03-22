@@ -7,25 +7,23 @@ let refer = [
     name: "Code and Algorithm Implementation",
     comp: [
       {
-        name: "Binary Search Tree - GeeksforGeeks",
-        url: "https://www.geeksforgeeks.org/binary-search-tree-data-structure/"
+        name: "AVL tree implementation - Programiz",
+        url: "https://www.programiz.com/dsa/avl-tree"
       },
       {
-        name: "Containers - C++ Reference (cplusplus.com)",
-        url: "https://www.cplusplus.com/reference/stl/"
+        name: "AVL tree implementation - GeekForGeeks",
+        url: "https://www.geeksforgeeks.org/avl-tree-set-1-insertion/"
       },
       {
-        name: "(Optional) C++ Sets with Custom Comparators · USACO Guide",
+        name: "PDF uploaded in classroom",
         url:
-          "https://www.geeksforgeeks.org/comparator-class-in-c-with-examples/"
+          "https://drive.google.com/file/d/1mL5Em6Unayv6JMA6iCh9N5ha5XWY41mT/view"
       },
       {
-        name: "CSV file management using C++ - GeeksforGeeks",
-        url: "https://www.geeksforgeeks.org/csv-file-management-using-c/"
-      },
-      {
-        name: "Debugging in VS Code",
-        url: "https://code.visualstudio.com/docs/editor/debugging"
+        name:
+          "Algorithms for Reporting and Counting Geometric Intersections - Bentley; Ottoman",
+        url:
+          "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1675432&tag=1"
       }
     ]
   },

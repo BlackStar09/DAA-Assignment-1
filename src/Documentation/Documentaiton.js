@@ -41,25 +41,8 @@ class Issues extends React.Component {
               flexDirection: "column"
             }}
           >
-            <h3>Measure Problem </h3>
             <h5>
-              <a href="https://thealchemist1307.github.io/measure-problem-documentation/">
-                Go to Documentation
-              </a>
-            </h5>
-          </div>
-          <div
-            class="col"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column"
-            }}
-          >
-            <h3>Contour Problem</h3>
-            <h5>
-              <a href="https://thealchemist1307.github.io/contour-documentation/documentation/html/">
+              <a href="https://blackstar09.github.io/DAA-Assignment-1/html/index.html">
                 Go to Documentation
               </a>
             </h5>

@@ -30,9 +30,9 @@ class Home extends React.Component {
             marginBottom: "40px"
           }}
         >
-          Implementation and visualization of the the "Optimal
-          Divide-and-Conquer to Compute Measure and Contour for a Set of
-          Iso-Rectangles" by Ralf Hartmut Güting
+          This is the implementation of the the "Bentley Ottoman Line
+          Intersection Problem to find all the intersecting points given a set
+          of lines
         </h2>
         <StudentCarousel />
       </div>

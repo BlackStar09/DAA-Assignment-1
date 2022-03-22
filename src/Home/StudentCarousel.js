@@ -8,23 +8,17 @@ class StudentCarousel extends React.Component {
     this.state = {
       student: [
         {
-          name: "Deepak George",
+          name: "Aswath Vinayak K",
           workedOn: "",
           img: ""
         },
         {
-          name: "Nishit Chouhan",
+          name: "Sanath Salil",
           workedOn: "",
           img: ""
         },
         {
-          name: "Shivang Singh",
-          workedOn: "",
-          img: ""
-        },
-
-        {
-          name: "Shivank Thakur",
+          name: "Kartheek Nadimpalli",
           workedOn: "",
           img: ""
         }
