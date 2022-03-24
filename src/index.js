@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { Fragment, StrictMode } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import "bootstrap/dist/css/bootstrap.css";
@@ -8,8 +8,8 @@ Modal.setAppElement(document.getElementById("root"));
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <StrictMode>
+  <Fragment>
     <App />
-  </StrictMode>,
+  </Fragment>,
   rootElement
 );

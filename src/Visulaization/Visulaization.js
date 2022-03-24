@@ -9,61 +9,38 @@ class Visualization extends React.Component {
   }
   logicJS = (b1) => {
     var coords = this.props.coords;
+    var output = this.props.output;
     var coord = coords[0];
 
     b1.suspendUpdate();
     for (var i = 0; i < coords.length; i++) {
-      if (i == 0) {
-        var p1 = b1.create("point", [coords[i].y1, coords[i].x1], {
-          size: 0,
-          name: ""
-        });
-        var p2 = b1.create("point", [coords[i].y1, coords[i].x2], {
-          size: 0,
-          name: ""
-        });
-        var poly = b1.create("line", [p1, p2, p3, p4], {
-          borders: { strokeColor: "black" },
-          fillColor: "#4287f5"
-        });
-      } else {
-        var p1 = b1.create("point", [coords[i].y1, coords[i].x1], {
-          size: 0,
-          name: ""
-        });
-        var p2 = b1.create("point", [coords[i].y1, coords[i].x2], {
-          size: 0,
-          name: ""
-        });
-        var p3 = b1.create("point", [coords[i].y2, coords[i].x2], {
-          size: 0,
-          name: ""
-        });
-        var p4 = b1.create("point", [coords[i].y2, coords[i].x1], {
-          size: 0,
-          name: ""
-        });
-        var poly = b1.create("polygon", [p1, p2, p3, p4], {
-          borders: { strokeColor: "black" }
-        });
-      }
+      console.log(coords[i].x1, coords[i].y1);
+      var p1 = b1.create("point", [coords[i].x1, coords[i].y1], {
+        size: 3,
+        name: "",
+        fillColor: "black",
+        strokeColor: "black"
+      });
+      var p2 = b1.create("point", [coords[i].x2, coords[i].y2], {
+        size: 3,
+        name: "",
+        fillColor: "black",
+        strokeColor: "black"
+      });
+      var poly = b1.create("line", [p1, p2], {
+        borders: {},
+        straightLast: false,
+        straightFirst: false
+      });
     }
 
-    var contour = this.props.contour;
-    for (var i = 0; i < contour.length; i++) {
-      var p1 = b1.create("point", [contour[i].x1, contour[i].y1], {
-        size: 0,
-        name: ""
-      });
-      var p2 = b1.create("point", [contour[i].x2, contour[i].y2], {
-        size: 0,
-        name: ""
-      });
-      var li = b1.create("line", [p1, p2], {
-        straightFirst: false,
-        straightLast: false,
-        strokeColor: "#ff0000",
-        strokeWidth: 2
+    for (var i = 0; i < output.length; i++) {
+      console.log(output[i].x, output[i].y);
+      var p1 = b1.create("point", [output[i].x, output[i].y], {
+        size: 3,
+        name: ("( " + output[i].x + " , " + output[i].y + " )").toString(),
+        fillColor: "red",
+        strokeColor: "red"
       });
     }
 

@@ -23,52 +23,49 @@ class VisPage extends React.Component {
       rectangleArray: [[]],
       coord: [],
       isOpen: false,
-      measure: "",
-      input: "2 \n 1 2 3 4 \n 4 5 6 7",
-      loading: true,
-      contour: []
+      input: "2 \n 0 1 1 0 \n 0 0 1 1",
+      output: [],
+      loading: true
     };
   }
   async componentDidMount() {
-    var input = "2 \n 1 2 3 4 \n 4 5 6 7";
-    await axios.post("https://daabackend.herokuapp.com/api/coordinates", {
+    var input = "2 \n 0 1 1 0 \n 0 0 1 1";
+    await axios.post("https://daabackend.herokuapp.com/api/sweep", {
       input: input
     });
     await axios
-      .post("https://daabackend.herokuapp.com/api/coordinates", {
+      .post("https://daabackend.herokuapp.com/api/sweep", {
         input: input
       })
       .then(async (res) => {
+        console.log(res);
         this.setState({
           coord: JSON.parse(res.data).coords,
-          measure: JSON.parse(res.data).output,
-          contour: JSON.parse(res.data).contour,
+          output: JSON.parse(res.data).output,
           loading: false
         });
       });
-    await console.log(this.state.contour);
   }
   openModal = () => {
     this.setState({ isOpen: true, loading: true });
   };
   runCode = async () => {
     this.setState({ loading: true });
-    await axios.post("https://daabackend.herokuapp.com/api/coordinates", {
+    await axios.post("https://daabackend.herokuapp.com/api/sweep", {
       input: this.state.input
     });
     await axios
-      .post("https://daabackend.herokuapp.com/api/coordinates", {
+      .post("https://daabackend.herokuapp.com/api/sweep", {
         input: this.state.input
       })
       .then(async (res) => {
+        console.log(res);
         this.setState({
           coord: JSON.parse(res.data).coords,
-          measure: JSON.parse(res.data).output,
-          contour: JSON.parse(res.data).contour,
+          output: JSON.parse(res.data).output,
           loading: false
         });
       });
-    await console.log(this.state.contour);
   };
   render() {
     return (
@@ -137,34 +134,6 @@ class VisPage extends React.Component {
                   Example for Input:
                 </h2>
               </div>
-              <div
-                class="col"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column"
-                }}
-              >
-                <h2> No. of Rectangles</h2>
-                <div style={{ height: "20px" }} />
-
-                <h4>Rectangle Parameters </h4>
-                <h4>xmin xmax ymin ymax </h4>
-              </div>
-              <div
-                class="col "
-                style={{
-                  display: "flex",
-                  alignItems: "flex-end",
-                  flexDirection: "column"
-                }}
-              >
-                <h2>3</h2>
-                <div style={{ height: "20px" }} />
-                <h2>0 10 0 5 </h2>
-                <h2>15 26 0 5 </h2>
-                <h2>4 20 4 14 </h2>
-              </div>
             </div>
           </div>
           <div
@@ -206,8 +175,17 @@ class VisPage extends React.Component {
                   }}
                 >
                   {" "}
-                  The solution to the measure problem is{" "}
-                  {this.state.measure.slice(1)}
+                  The intersecting points are
+                  {this.state.output.map((item, index) => {
+                    return (
+                      " (" +
+                      item.x +
+                      " , " +
+                      item.y +
+                      ") " +
+                      (this.state.output.length - 1 == index ? "." : ", ")
+                    ).toString();
+                  })}
                 </h3>
               ) : (
                 <div
@@ -283,14 +261,7 @@ class VisPage extends React.Component {
             this.setState({ loading: false });
           }}
         >
-          <Visualization
-            contour={this.state.contour}
-            coords={this.state.coord}
-            title={
-              "The solution to the measure problem is " +
-              this.state.measure.slice(1)
-            }
-          />
+          <Visualization output={this.state.output} coords={this.state.coord} />
         </Modal>
       </div>
     );
