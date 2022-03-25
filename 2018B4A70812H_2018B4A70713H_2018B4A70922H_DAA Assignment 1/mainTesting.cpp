@@ -28,8 +28,8 @@ int main(){
         }
     }
     testfile.close();
-    for(int i=0; i<n; i++)
-        cout<<segments[i].upper.x<<" "<<segments[i].upper.y<<" "<<segments[i].lower.x<<" "<<segments[i].lower.y<<endl;
+    //for(int i=0; i<n; i++)
+        //cout<<segments[i].upper.x<<" "<<segments[i].upper.y<<" "<<segments[i].lower.x<<" "<<segments[i].lower.y<<endl;
     cout<<endl<<"Points of Intersection are: "<<endl;
     start = clock();
     ios_base::sync_with_stdio(false);
