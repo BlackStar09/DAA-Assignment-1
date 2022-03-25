@@ -327,6 +327,8 @@ class status{
     void getLeftNeighbor(statusQueue* node, Line l1, double y_coor, Line* lastRight){
         //cout<<"Entered Left Neighbor"<<node->height<<endl;
         //cout<<l1.upper.x<<" "<<l1.upper.y<<endl;
+        if(node == NULL)
+            return ;
         if(node->height == 1){
             if(lastRight->upper.x == -1){
                 if(sloper(node->segment, y_coor-0.1) < sloper(l1, y_coor-0.1))
@@ -348,6 +350,8 @@ class status{
     void getRightNeighbor(statusQueue* node, Line l1, double y_coor, Line* lastLeft){
         //cout<<"Entered Right Neighbor"<<node->height<<endl;
         //cout<<l1.upper.x<<" "<<l1.upper.y<<endl;
+        if(node == NULL)
+            return ;
         if(node->height == 1){
             //cout<<"Found"<<endl;
             if(lastLeft->upper.x == -1){
@@ -366,6 +370,8 @@ class status{
     
     ///Function that returns both the neighbors of a node, given the point (taken in x_coor and y_coor)
     void getNeighbors(statusQueue* node, double x_coor, double y_coor, Line* lastRight, Line* lastLeft){
+        if(node == NULL)
+            return ;
         if(node->height == 1){
             if(lastRight->upper.x == -1){
                 if(sloper(node->segment, y_coor-0.1) <= x_coor)

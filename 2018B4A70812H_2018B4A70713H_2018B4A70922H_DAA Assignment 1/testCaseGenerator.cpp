@@ -6,7 +6,7 @@ int main()
 {
     int n;
     cin>>n;
-    ofstream MyFile("testcase2.txt");
+    ofstream MyFile("testcase2.dat");
     //MyFile<<n<<"\n";
     for(int i=0;i<n;i++){
         int a = rand()%n;
