@@ -7,12 +7,14 @@ int main()
     int n;
     cin>>n;
     ofstream MyFile("testcase2.txt");
+    ofstream MyFile1("testcasewithendline.txt");
     //MyFile<<n<<"\n";
     for(int i=0;i<n;i++){
         int a = rand()%n;
         int b = rand()%n;
         int c = rand()%n;
         int d = rand()%n;
+        MyFile1<<"\\n"<<a<<" "<<b<<" "<<c<<" "<<d<<" ";
         MyFile<<a<<" "<<b<<" "<<c<<" "<<d<<" "<<"\n";
     }
     MyFile.close();

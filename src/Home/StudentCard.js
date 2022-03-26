@@ -16,7 +16,7 @@ class StudentCard extends React.Component {
           alignItems: "center",
           alignContent: "center",
           alignSelf: "center",
-          backgroundColor: "tomato",
+          backgroundColor: "rgb(79, 4, 109)",
           height: "400px",
           justifyContent: "center"
         }}

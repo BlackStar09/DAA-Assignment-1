@@ -197,7 +197,7 @@ class VisPage extends React.Component {
                 >
                   <ReactLoading
                     type="bars"
-                    color="tomato"
+                    color="rgb(79, 4, 109)"
                     height={"50%"}
                     width={"50px"}
                   />
@@ -214,7 +214,7 @@ class VisPage extends React.Component {
                 }}
                 style={{
                   alignSelf: "center",
-                  backgroundColor: "tomato",
+                  backgroundColor: "rgb(79, 4, 109)",
                   paddingTop: "10px",
                   paddingBottom: "10px",
                   paddingRight: "20px",
@@ -234,7 +234,7 @@ class VisPage extends React.Component {
                 }}
                 style={{
                   alignSelf: "center",
-                  backgroundColor: "tomato",
+                  backgroundColor: "rgb(79, 4, 109)",
                   paddingTop: "10px",
                   paddingBottom: "10px",
                   paddingRight: "20px",

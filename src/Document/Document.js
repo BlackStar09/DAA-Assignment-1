@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Scrollbars } from "rc-scrollbars";
 import "./Document.css";
-import Plot from "../Assets/plot.png";
 let table = {
   Sheet1: [
     {
@@ -75,49 +74,60 @@ let table = {
 let analysis = {
   Sheet1: [
     {
+      number: "2",
+      measure: "0.136"
+    },
+    {
       number: "10",
-      measure: "2.9",
-      contour: "4.18"
+      measure: "0.176"
+    },
+    {
+      number: "50",
+      measure: "1.046"
     },
     {
       number: "100",
-      measure: "34.91",
-      contour: "47.11"
+      measure: "1.992"
+    },
+    {
+      number: "500",
+      measure: "12.904"
     },
     {
       number: "1000",
-      measure: "314.96",
-      contour: "403.73"
+      measure: "27.353"
+    },
+    {
+      number: "5000",
+      measure: "110.155"
     },
     {
       number: "10000",
-      measure: "2151.77",
-      contour: "2876.42"
+      measure: "220.92"
+    },
+    {
+      number: "20000",
+      measure: "758.741"
+    },
+    {
+      number: "50000",
+      measure: "1555.092"
     },
     {
       number: "100000",
-      measure: "4038.07",
-      contour: "4932.81"
+      measure: "3118.105"
     },
     {
       number: "200000",
-      measure: "4649.62",
-      contour: "5394.12"
+      measure: "5505.140"
     },
     {
       number: "500000",
-      measure: "5752.18",
-      contour: "6594.72"
+      measure: "14322.371"
     },
     {
       number: "1000000",
-      measure: "6901.01",
-      contour: "8368.35"
-    },
-    {
-      number: "2000000",
-      measure: "10020.13",
-      contour: "13579.42"
+      measure: "27711.165"
     }
   ]
 };
@@ -153,39 +163,26 @@ class Document extends React.Component {
                 style={{
                   border: "solid",
                   borderWidth: "1px",
-                  borderColor: "tomato",
+                  borderColor: "rgb(79, 4, 109)",
                   fontSize: "20px",
                   fontWeight: "bold",
                   textAlign: "center"
                 }}
               >
-                Number of Rectangles{" "}
+                Number of Lines{" "}
               </div>
               <div
                 class="col"
                 style={{
                   border: "solid",
                   borderWidth: "1px",
-                  borderColor: "tomato",
+                  borderColor: "rgb(79, 4, 109)",
                   fontSize: "20px",
                   fontWeight: "bold",
                   textAlign: "center"
                 }}
               >
                 Time Taken for Measure Problem (ms)
-              </div>
-              <div
-                class="col"
-                style={{
-                  border: "solid",
-                  borderWidth: "1px",
-                  borderColor: "tomato",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  textAlign: "center"
-                }}
-              >
-                Time Taken for Contour Problem (ms)
               </div>
             </div>
             {analysis.Sheet1.map((item, index) => {
@@ -196,7 +193,7 @@ class Document extends React.Component {
                     style={{
                       border: "solid",
                       borderWidth: "1px",
-                      borderColor: "tomato",
+                      borderColor: "rgb(79, 4, 109)",
                       textAlign: "center"
                     }}
                   >
@@ -207,46 +204,15 @@ class Document extends React.Component {
                     style={{
                       border: "solid",
                       borderWidth: "1px",
-                      borderColor: "tomato",
+                      borderColor: "rgb(79, 4, 109)",
                       textAlign: "center"
                     }}
                   >
                     {item.measure}
                   </div>
-                  <div
-                    class="col"
-                    style={{
-                      border: "solid",
-                      borderWidth: "1px",
-                      borderColor: "tomato",
-                      textAlign: "center"
-                    }}
-                  >
-                    {item.contour}
-                  </div>
                 </div>
               );
             })}
-          </div>
-          <div
-            style={{
-              width: "100%",
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "center",
-              marginTop: 20
-            }}
-          >
-            <img
-              src={Plot}
-              alt="Image"
-              style={{
-                background: "white",
-                alignSelf: "center",
-                width: "50%",
-                marginBottom: 10
-              }}
-            />
           </div>
           <h1 style={{ color: "white", textAlign: "center", margin: "20px" }}>
             Calculating the Time Complexity{" "}
@@ -255,8 +221,8 @@ class Document extends React.Component {
           <div class="container">
             <h2 style={{ margin: "20px" }}>
               The Complexity Analysis for the common subroutines involved in our
-              implementation of Guting’s algorithm for the Measure problem and
-              Contour problem:
+              implementation of the Bentley Ottoman algorithm for finding the
+              intersecting points:
             </h2>
             <div class="row">
               <div
@@ -264,7 +230,7 @@ class Document extends React.Component {
                 style={{
                   border: "solid",
                   borderWidth: "1px",
-                  borderColor: "tomato",
+                  borderColor: "rgb(79, 4, 109)",
                   fontSize: "20px",
                   fontWeight: "bold"
                 }}
@@ -276,7 +242,7 @@ class Document extends React.Component {
                 style={{
                   border: "solid",
                   borderWidth: "1px",
-                  borderColor: "tomato",
+                  borderColor: "rgb(79, 4, 109)",
                   fontSize: "20px",
                   fontWeight: "bold"
                 }}
@@ -288,7 +254,7 @@ class Document extends React.Component {
                 style={{
                   border: "solid",
                   borderWidth: "1px",
-                  borderColor: "tomato",
+                  borderColor: "rgb(79, 4, 109)",
                   fontSize: "20px",
                   fontWeight: "bold"
                 }}
@@ -304,7 +270,7 @@ class Document extends React.Component {
                     style={{
                       border: "solid",
                       borderWidth: "1px",
-                      borderColor: "tomato"
+                      borderColor: "rgb(79, 4, 109)"
                     }}
                   >
                     {item["Subroutine Name"]}
@@ -314,7 +280,7 @@ class Document extends React.Component {
                     style={{
                       border: "solid",
                       borderWidth: "1px",
-                      borderColor: "tomato"
+                      borderColor: "rgb(79, 4, 109)"
                     }}
                   >
                     {item["Time Complexity"]}
@@ -324,7 +290,7 @@ class Document extends React.Component {
                     style={{
                       border: "solid",
                       borderWidth: "1px",
-                      borderColor: "tomato"
+                      borderColor: "rgb(79, 4, 109)"
                     }}
                   >
                     {item.Explanation}

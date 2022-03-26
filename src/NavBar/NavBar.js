@@ -69,8 +69,6 @@ class NavBar extends React.Component {
         { name: "Visualization", href: "/visualization" },
         { name: "Documentation", href: "/documentation" },
 
-        { name: "Issues", href: "/issues" },
-
         { name: "References", href: "/references" }
       ],
       active: this.props.active
@@ -85,13 +83,13 @@ class NavBar extends React.Component {
       padding-top: 15px;
       padding-bottom: 15px;
       background-color: ${(props) =>
-        props.tab == this.state.active ? "tomato" : "#333"};
+        props.tab == this.state.active ? "rgb(79, 4, 109)" : "#333"};
       &:hover {
         color: blue;
         background-color: ${(props) =>
           props.tab == this.state.active
             ? "orange"
-            : "tomato"}; // <Thing> when hovered
+            : "rgb(79, 4, 109)"}; // <Thing> when hovered
       }
     `;
     return (
