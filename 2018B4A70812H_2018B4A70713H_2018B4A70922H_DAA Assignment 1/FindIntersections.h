@@ -178,6 +178,18 @@ class FindIntersections{
         }
         return union_vec;
     }
+
+    vector<Line> unionOfb(vector<Line> a, vector<Line> b){
+        vector<Line> union_vec;
+        for(auto it = a.begin(); it!=a.end(); it++)
+            union_vec.push_back((*it));
+        reverse(b.begin(), b.end());
+        for(auto it = b.begin(); it!=b.end(); it++){
+            if(contains(union_vec, (*it)) == 1)
+                union_vec.push_back((*it));
+        }
+        return union_vec;
+    }
     //! A helper function to check whether a given vector is empty.
     bool empty(vector<Line> x){
         if(x.size() == 0)
@@ -200,7 +212,7 @@ class FindIntersections{
             st_root = newStatus.deleteSegment(st_root, (*it), eventer->eventPoint.y);
         }
         //cout<<"HEP - 5"<<endl;
-        vector<Line> inserters = unionOf(eventer->U, eventer->C);
+        vector<Line> inserters = unionOfb(eventer->U, eventer->C);
         for(auto it=inserters.begin(); it!=inserters.end(); it++)
             st_root = newStatus.inserti(st_root, (*it), eventer->eventPoint.y - 0.1);
         
