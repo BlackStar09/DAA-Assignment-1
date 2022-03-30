@@ -5,69 +5,84 @@ import "./Document.css";
 let table = {
   Sheet1: [
     {
-      "Subroutine Name": "y_set()",
+      "Subroutine Name": "FindIntersections()",
       "Time Complexity": "O(n*logn)",
-      Explanation:
-        "iterating through the set of rectangles of size n, and insertion of each of them takes O(logn) time"
+      Explanation: ""
     },
     {
-      "Subroutine Name": "Y_partition()",
-      "Time Complexity": "O(n*logn)",
-      Explanation:
-        "Iteration through all y_cordinates takes O(n) and in each iteration we insert into a priority queue O(logn)"
+      "Subroutine Name": "findNewEvent()",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
     },
     {
-      "Subroutine Name": "findFrame()",
-      "Time Complexity": "O(n)",
-      Explanation:
-        "iterates through all the rectangles and finds the minimum and maximum y and x coordinates"
+      "Subroutine Name": "contains()",
+      "Time Complexity": "O(n+k)",
+      Explanation: ""
     },
     {
-      "Subroutine Name": "set_intersection()",
-      "Time Complexity": "O(n)",
-      Explanation:
-        "Exploits the fact that the sets are in sorted order, and uses the two pointer approach to find intersection"
+      "Subroutine Name": "handleEventPoint()",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
     },
     {
-      "Subroutine Name": "set_difference()",
-      "Time Complexity": "O(n)",
-      Explanation:
-        "Exploits the fact that the sets are in sorted order, and uses the two pointer approach to find intersection"
+      "Subroutine Name": "maxValueEvent",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
     },
     {
-      "Subroutine Name": "set_union()",
-      "Time Complexity": "O(n)",
-      Explanation: "Adds all elements excluding the duplicates"
+      "Subroutine Name": "inserti",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
     },
     {
-      "Subroutine Name": "copy()",
-      "Time Complexity": "O(n*logn)",
-      Explanation:
-        "Takes the intervals(sorted) and the stripes(sorted) and uses two pointer O(n) to find the optimum stripe and then insert into set in O(logn)"
+      "Subroutine Name": "deleteNode()",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
     },
     {
-      "Subroutine Name": "blacken()",
-      "Time Complexity": "O(n*logn)",
-      Explanation:
-        "Takes the intervals(sorted) and the stripes(sorted) and uses two pointer O(n) to find the optimum stripe to update x_union and then insert into set in O(logn)"
+      "Subroutine Name": "deleteSegment()",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
     },
     {
-      "Subroutine Name": "concat()",
-      "Time Complexity": "O(n*logn)",
-      Explanation:
-        "Takes advantage of the ordering of stripes and partitions to update the x_union in O(n) and insert in O(logn),"
+      "Subroutine Name": "minValueEvent",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
     },
     {
-      "Subroutine Name": "stripes()",
-      "Time Complexity": "O(n*logn*logn)",
-      Explanation:
-        "T(n)= 2*T(n/2) + O(n*logn)\n2*T(n/2) - call for stripes for left and right vertical edges\nO(n*logn) - bottleneck caused due to concat() / blacken() / copy() . All are O(n*logn) operations."
+      "Subroutine Name": "getNextEvent",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
     },
     {
-      "Subroutine Name": "rectangle_DAC()",
-      "Time Complexity": "O(n*logn) + O(n*logn*logn)",
-      Explanation:
-        "Divides the set of vertical edges of the rectangle into two equal sets L and R O(nlogn), and calls the stripes algorithm on this initial division of vertices. The stripes algorithm called inside will take O(nlogn *logn). Returns the final set of vertices to the main function."
+      "Subroutine Name": "minValueSegement",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
+    },
+    {
+      "Subroutine Name": "getLeftNeighbor",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
+    },
+    {
+      "Subroutine Name": "getRightNeighbor",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
+    },
+    {
+      "Subroutine Name": "getNeighbors()",
+      "Time Complexity": "O(logn)",
+      Explanation: ""
+    },
+    {
+      "Subroutine Name": "runAlgorithm()",
+      "Time Complexity": "O((n+k)logn)",
+      Explanation: ""
+    },
+    {
+      "Subroutine Name": "All other functions",
+      "Time Complexity": "O(1)",
+      Explanation: ""
     }
   ]
 };
@@ -214,15 +229,16 @@ class Document extends React.Component {
               );
             })}
           </div>
-          <h1 style={{ color: "white", textAlign: "center", margin: "20px" }}>
+          {/* <h1 style={{ color: "white", textAlign: "center", margin: "20px" }}>
             Calculating the Time Complexity{" "}
-          </h1>
+          </h1> */}
 
           <div class="container">
             <h2 style={{ margin: "20px" }}>
               The Complexity Analysis for the common subroutines involved in our
               implementation of the Bentley Ottoman algorithm for finding the
-              intersecting points:
+              intersecting points. Let k be the number of intersections of the
+              line segments. The overall complexity is O((n+k)logn) :
             </h2>
             <div class="row">
               <div
@@ -249,7 +265,7 @@ class Document extends React.Component {
               >
                 Time Complexity
               </div>
-              <div
+              {/* <div
                 class="col"
                 style={{
                   border: "solid",
@@ -260,7 +276,7 @@ class Document extends React.Component {
                 }}
               >
                 Explanation
-              </div>
+              </div> */}
             </div>
             {table.Sheet1.map((item, index) => {
               return (
@@ -285,7 +301,7 @@ class Document extends React.Component {
                   >
                     {item["Time Complexity"]}
                   </div>
-                  <div
+                  {/* <div
                     class="col"
                     style={{
                       border: "solid",
@@ -294,11 +310,11 @@ class Document extends React.Component {
                     }}
                   >
                     {item.Explanation}
-                  </div>
+                  </div> */}
                 </div>
               );
             })}
-            <div
+            {/* <div
               style={{
                 marginTop: "40px",
                 marginBottom: "40px"
@@ -311,8 +327,8 @@ class Document extends React.Component {
                 <span style={{ fontWeight: "bold" }}>measure() - O(n) -</span>{" "}
                 iterates through all the stripes and computes the total
               </h5>
-            </div>
-            <div
+            </div> */}
+            {/* <div
               style={{
                 fontWeight: "bold",
                 marginTop: "40px",
@@ -328,8 +344,8 @@ class Document extends React.Component {
               </h5>
               <h5>= O(n) + O(n) + O(n*logn*logn) + O(n)</h5>
               <h5>= O(n*logn*logn)</h5>
-            </div>
-            <div
+            </div> */}
+            {/* <div
               style={{
                 marginTop: "40px",
                 marginBottom: "40px"
@@ -365,8 +381,8 @@ class Document extends React.Component {
                 T(n) = 2T(n/2) + O(1). The solution to this recurrence relation
                 is T(n) = O(logn).
               </h5>
-            </div>
-            <div
+            </div> */}
+            {/* <div
               style={{
                 fontWeight: "bold",
                 marginTop: "40px",
@@ -382,7 +398,7 @@ class Document extends React.Component {
               </h5>
               <h5>= O(n) + O(n) + O(n*logn*logn) + O(n^2)</h5>
               <h5>= O(n^2)</h5>
-            </div>
+            </div> */}
           </div>
         </div>
       </Scrollbars>

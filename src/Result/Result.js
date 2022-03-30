@@ -35,11 +35,11 @@ const results = {
         "The intersecting points are (10.3385 , 9.70769) , (9 , 8.66667) , (8.82353 , 8.52941) , (8.44828 , 6.93103) , (3 , 6.8) , (9 , 6.8) , (6.02128 , 6.62766) , (9.25 , 6.45) , (0 , 6) , (3 , 6) , (6.48421 , 5.77895) , (7.86667 , 3.24444) .",
       Image: test2
     },
-    {
-      INPUT: "4\n1 3 2 1 \n0 0 0 0 \n0 3 3 3 \n3 1 0 1 ",
-      OUTPUT: "The intersecting points are (2 , 1) .",
-      Image: test3
-    },
+    // {
+    //   INPUT: "4\n1 3 2 1 \n0 0 0 0 \n0 3 3 3 \n3 1 0 1 ",
+    //   OUTPUT: "The intersecting points are (2 , 1) .",
+    //   Image: test3
+    // },
     {
       INPUT: "5\n3 3 2 4 \n0 3 2 1 \n1 4 1 1 \n3 0 3 3 \n0 1 4 2 ",
       OUTPUT: "The intersecting points are (3 , 3) , (1 , 2) , (3 , 1.75) .",
