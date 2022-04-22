@@ -29,18 +29,17 @@ class Algorithm extends React.Component {
 
           <div class="container">
             <h4 style={{ marginTop: "20px", marginBottom: "20px" }}>
-              Finding the set of all intersecting points would take O(n*n) time
-              if done in brute force. The Bentley Ottoman algorithm, otherwise
-              known as the sweep line algorithm, solves this problem in lesser
-              time. Imagine a line sweeping downwards in the Y axis. The
-              algorithm takes note of all points and lines that it comes across
-              with this line ("The sweep line"), and performs computations at
-              necessary event points to check for intersections. It does so with
-              the help of two structures, an event queue, which stores the event
-              points (upper endpoint or lower endpoint of segment, or
-              intersection point), and a status queue, which stores the ordered
-              sequence of segments intersecting the sweep line. These queues are
-              implemented as self-balancing, or AVL trees.
+              The task was to find the maximum number of pairs that could occur
+              in given RNA strand. The catch with this problem is:
+              <ul>
+                <li>
+                  Adenine can only pair with Uracil, Cytosine with Guanine
+                </li>
+                <li>There should be no knots in the pairings</li>
+                <li>Each Base can only have one pairing</li>
+              </ul>
+              The above problem was solved through a dynamic programming
+              solution
             </h4>
           </div>
         </div>

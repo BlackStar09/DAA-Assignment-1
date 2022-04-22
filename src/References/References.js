@@ -7,23 +7,18 @@ let refer = [
     name: "Code and Algorithm Implementation",
     comp: [
       {
-        name: "AVL tree implementation - Programiz",
-        url: "https://www.programiz.com/dsa/avl-tree"
+        name: "DP - GeeksForGeeks",
+        url: "https://www.geeksforgeeks.org/dynamic-programming/"
       },
       {
-        name: "AVL tree implementation - GeekForGeeks",
-        url: "https://www.geeksforgeeks.org/avl-tree-set-1-insertion/"
+        name: "RNA database",
+        url:
+          "http://ndbserver.rutgers.edu/service/ndb/atlas/gallery/rna?polType=all&rnaFunc=all&protFunc=all&strGalType=rna&expMeth=all&seqType=all&galType=table&start=0&limit=50"
       },
       {
-        name: "PDF uploaded in classroom",
+        name: "Classroom Notes",
         url:
           "https://drive.google.com/file/d/1mL5Em6Unayv6JMA6iCh9N5ha5XWY41mT/view"
-      },
-      {
-        name:
-          "Algorithms for Reporting and Counting Geometric Intersections - Bentley; Ottoman",
-        url:
-          "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1675432&tag=1"
       }
     ]
   },
@@ -33,23 +28,6 @@ let refer = [
       {
         name: "Doxygen: Main Page",
         url: "https://www.doxygen.nl/index.html"
-      }
-    ]
-  },
-  {
-    name: "Visualization",
-    comp: [
-      {
-        name: "Matplotlib: Python plotting — Matplotlib 3.3.4 documentation",
-        url: "https://matplotlib.org/"
-      },
-      {
-        name: "Getting Started – React (reactjs.org)",
-        url: "https://reactjs.org/docs/getting-started.html"
-      },
-      {
-        name: "JSXGraph - JSXGraph (uni-bayreuth.de)",
-        url: "https://jsxgraph.uni-bayreuth.de/wp/index.html"
       }
     ]
   }

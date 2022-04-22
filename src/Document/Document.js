@@ -5,83 +5,13 @@ import "./Document.css";
 let table = {
   Sheet1: [
     {
-      "Subroutine Name": "FindIntersections()",
-      "Time Complexity": "O(n*logn)",
+      "Subroutine Name": "computedp()",
+      "Time Complexity": "O(n^2)",
       Explanation: ""
     },
     {
-      "Subroutine Name": "findNewEvent()",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "contains()",
-      "Time Complexity": "O(n+k)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "handleEventPoint()",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "maxValueEvent",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "inserti",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "deleteNode()",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "deleteSegment()",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "minValueEvent",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "getNextEvent",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "minValueSegement",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "getLeftNeighbor",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "getRightNeighbor",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "getNeighbors()",
-      "Time Complexity": "O(logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "runAlgorithm()",
-      "Time Complexity": "O((n+k)logn)",
-      Explanation: ""
-    },
-    {
-      "Subroutine Name": "All other functions",
-      "Time Complexity": "O(1)",
+      "Subroutine Name": "findPairs()",
+      "Time Complexity": "O(n)",
       Explanation: ""
     }
   ]
@@ -236,9 +166,8 @@ class Document extends React.Component {
           <div class="container">
             <h2 style={{ margin: "20px" }}>
               The Complexity Analysis for the common subroutines involved in our
-              implementation of the Bentley Ottoman algorithm for finding the
-              intersecting points. Let k be the number of intersections of the
-              line segments. The overall complexity is O((n+k)logn) :
+              implementation of the RNA pair finding algorithm. The overall
+              complexity is O(n^2) :
             </h2>
             <div class="row">
               <div
