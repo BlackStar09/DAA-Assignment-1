@@ -1,0 +1,41 @@
+\hypertarget{final_8cpp}{}\doxysection{final.\+cpp File Reference}
+\label{final_8cpp}\index{final.cpp@{final.cpp}}
+{\ttfamily \#include $<$bits/stdc++.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{final_8cpp_a1229d860654a56eda49b74125586a08a}{compute\+DP}} (vector$<$ vector$<$ int $>$ $>$ \&dp, int i, int j, string s, int n, vector$<$ vector$<$ vector$<$ pair$<$ int, int $>$ $>$ $>$ $>$ \&dp2)
+\begin{DoxyCompactList}\small\item\em Function that recursively calculates the max number of base pairings. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{final_8cpp_a8bb0a0400fc896179c34f4910197f444}{find\+Pairs}} (vector$<$ pair$<$ int, int $>$ $>$ \&ans, vector$<$ vector$<$ int $>$ $>$ \&dp, int i, int j, int n, vector$<$ vector$<$ vector$<$ pair$<$ int, int $>$ $>$ $>$ $>$ \&dp2)
+\begin{DoxyCompactList}\small\item\em Function that recursively finds all the base pairs that gave us the optimal number of pairings. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{final_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{final_8cpp_a1229d860654a56eda49b74125586a08a}\label{final_8cpp_a1229d860654a56eda49b74125586a08a}} 
+\index{final.cpp@{final.cpp}!computeDP@{computeDP}}
+\index{computeDP@{computeDP}!final.cpp@{final.cpp}}
+\doxysubsubsection{\texorpdfstring{computeDP()}{computeDP()}}
+{\footnotesize\ttfamily int compute\+DP (\begin{DoxyParamCaption}\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{dp,  }\item[{int}]{i,  }\item[{int}]{j,  }\item[{string}]{s,  }\item[{int}]{n,  }\item[{vector$<$ vector$<$ vector$<$ pair$<$ int, int $>$ $>$ $>$ $>$ \&}]{dp2 }\end{DoxyParamCaption})}
+
+
+
+Function that recursively calculates the max number of base pairings. 
+
+Uses the recursive relation taught in class to fill cells of the dp table. In addition, a second table is populated to keep track of which cells led to the optimal value. This is used to find out the actual pairings in the future. \mbox{\Hypertarget{final_8cpp_a8bb0a0400fc896179c34f4910197f444}\label{final_8cpp_a8bb0a0400fc896179c34f4910197f444}} 
+\index{final.cpp@{final.cpp}!findPairs@{findPairs}}
+\index{findPairs@{findPairs}!final.cpp@{final.cpp}}
+\doxysubsubsection{\texorpdfstring{findPairs()}{findPairs()}}
+{\footnotesize\ttfamily void find\+Pairs (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ int, int $>$ $>$ \&}]{ans,  }\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{dp,  }\item[{int}]{i,  }\item[{int}]{j,  }\item[{int}]{n,  }\item[{vector$<$ vector$<$ vector$<$ pair$<$ int, int $>$ $>$ $>$ $>$ \&}]{dp2 }\end{DoxyParamCaption})}
+
+
+
+Function that recursively finds all the base pairs that gave us the optimal number of pairings. 
+
+We make use of the second table to find which cells we have to visit. Each cell of the second table is a vector with three pairs. The first two pairs indicate cells which contributed to the optimal value. The third pair indicates which pair added to the optimal value in case j is a part of a pair. \mbox{\Hypertarget{final_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{final_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{final.cpp@{final.cpp}!main@{main}}
+\index{main@{main}!final.cpp@{final.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
