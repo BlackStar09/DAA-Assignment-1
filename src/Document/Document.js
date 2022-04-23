@@ -19,60 +19,56 @@ let table = {
 let analysis = {
   Sheet1: [
     {
-      number: "2",
-      measure: "0.136"
-    },
-    {
       number: "10",
-      measure: "0.176"
+      measure: "0.00001"
     },
     {
       number: "50",
-      measure: "1.046"
+      measure: "0.001"
     },
     {
       number: "100",
-      measure: "1.992"
+      measure: "0.006"
+    },
+    {
+      number: "150",
+      measure: "0.018"
+    },
+    {
+      number: "200",
+      measure: "0.043"
+    },
+    {
+      number: "250",
+      measure: "0.083"
+    },
+    {
+      number: "300",
+      measure: "0.138"
+    },
+    {
+      number: "350",
+      measure: "0.218"
+    },
+    {
+      number: "400",
+      measure: "0.329"
+    },
+    {
+      number: "450",
+      measure: "0.474"
     },
     {
       number: "500",
-      measure: "12.904"
+      measure: "0.64"
+    },
+    {
+      number: "750",
+      measure: "2.156"
     },
     {
       number: "1000",
-      measure: "27.353"
-    },
-    {
-      number: "5000",
-      measure: "110.155"
-    },
-    {
-      number: "10000",
-      measure: "220.92"
-    },
-    {
-      number: "20000",
-      measure: "758.741"
-    },
-    {
-      number: "50000",
-      measure: "1555.092"
-    },
-    {
-      number: "100000",
-      measure: "3118.105"
-    },
-    {
-      number: "200000",
-      measure: "5505.140"
-    },
-    {
-      number: "500000",
-      measure: "14322.371"
-    },
-    {
-      number: "1000000",
-      measure: "27711.165"
+      measure: "5"
     }
   ]
 };
@@ -127,7 +123,7 @@ class Document extends React.Component {
                   textAlign: "center"
                 }}
               >
-                Time Taken for Measure Problem (ms)
+                Time Taken for Measure Problem (s)
               </div>
             </div>
             {analysis.Sheet1.map((item, index) => {

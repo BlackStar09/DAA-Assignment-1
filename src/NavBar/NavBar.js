@@ -37,24 +37,24 @@ let refer = [
         url: "https://www.doxygen.nl/index.html"
       }
     ]
-  },
-  {
-    name: "Visualization",
-    comp: [
-      {
-        name: "Matplotlib: Python plotting — Matplotlib 3.3.4 documentation",
-        url: "https://matplotlib.org/"
-      },
-      {
-        name: "Getting Started – React (reactjs.org)",
-        url: "https://reactjs.org/docs/getting-started.html"
-      },
-      {
-        name: "JSXGraph - JSXGraph (uni-bayreuth.de)",
-        url: "https://jsxgraph.uni-bayreuth.de/wp/index.html"
-      }
-    ]
   }
+  // {
+  //   name: "Visualization",
+  //   comp: [
+  //     {
+  //       name: "Matplotlib: Python plotting — Matplotlib 3.3.4 documentation",
+  //       url: "https://matplotlib.org/"
+  //     },
+  //     {
+  //       name: "Getting Started – React (reactjs.org)",
+  //       url: "https://reactjs.org/docs/getting-started.html"
+  //     },
+  //     {
+  //       name: "JSXGraph - JSXGraph (uni-bayreuth.de)",
+  //       url: "https://jsxgraph.uni-bayreuth.de/wp/index.html"
+  //     }
+  //   ]
+  // }
 ];
 
 class NavBar extends React.Component {
@@ -66,7 +66,7 @@ class NavBar extends React.Component {
         { name: "Algorithm", href: "/algorithm" },
         { name: "Analysis", href: "/analysis" },
         { name: "Result", href: "/result" },
-        { name: "Visualization", href: "/visualization" },
+        //{ name: "Visualization", href: "/visualization" },
         { name: "Documentation", href: "/documentation" },
 
         { name: "References", href: "/references" }
